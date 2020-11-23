@@ -1,0 +1,20 @@
+package net.runelite.client.plugins.ElPlanks;
+
+public enum ElPlanksState
+{
+	ANIMATING,
+	NULL_PLAYER,
+	TICK_TIMER,
+	MOVING,
+	OPENING_BANK,
+	MISSING_REQUIRED,
+	DEPOSIT_INVENT,
+	CLOSING_BANK,
+	HOUSE_TELE,
+	TELE_CAMMY,
+	TALK_BUTLER,
+	WORKING,
+	WITHDRAW_LOGS,
+	CLOSE_BANK,
+	UNKNOWN;
+}

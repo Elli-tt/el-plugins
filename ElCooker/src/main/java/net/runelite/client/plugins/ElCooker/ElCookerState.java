@@ -1,0 +1,17 @@
+package net.runelite.client.plugins.ElCooker;
+
+public enum ElCookerState
+{
+	ANIMATING,
+	FIND_OBJECT,
+	MISSING_ITEMS,
+	MOVING,
+	TIMEOUT,
+	BANK_NOT_FOUND,
+	FIND_BANK,
+	DEPOSIT_ITEMS,
+	HANDLE_BREAK,
+	UNHANDLED_STATE,
+	WITHDRAW_ITEMS,
+	COOK_WIDGET;
+}
