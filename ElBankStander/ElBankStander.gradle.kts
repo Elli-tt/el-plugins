@@ -23,10 +23,11 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-version = "2.0.4"
+version = "2.9.9"
 
-project.extra["PluginName"] = "El Planks" // This is the name that is used in the external plugin manager panel
-project.extra["PluginDescription"] = "Makes plank in your POH" // This is the description that is used in the external plugin manager panel
+project.extra["PluginName"] = "El Bank Stander" // This is the name that is used in the external plugin manager panel
+project.extra["PluginDescription"] = "Performs various bank standing activities." // This is the description that is used in the external plugin manager panel
+
 
 dependencies {
     compileOnly(group = "com.openosrs.externals", name = "botutils", version = "4.9.1+");

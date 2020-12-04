@@ -95,6 +95,13 @@ public class ElTestPlugin extends Plugin implements MouseListener, KeyListener {
 	private Widget bankEniola = null;
 	private Widget ouraniaTele = null;
 
+	int sellState = 0;
+	boolean sellYet = false;
+
+	private WorldArea phialsShop = new WorldArea(new WorldPoint(2945,3210,0), new WorldPoint(2951,3218,0));
+
+	private int prayerToSwitch = 0;
+
 	MenuEntry targetMenu;
 	GameObject targetObject;
 
@@ -124,8 +131,8 @@ public class ElTestPlugin extends Plugin implements MouseListener, KeyListener {
 		log.info("Plugin started");
 		//clientThread.invoke(this::addPickerWidget);
 		//clientThread.invoke(this::addMeleeWidget);
-		clientThread.invoke(this::addOuraniaTeleWidget);
-		clientThread.invoke(this::addBankEniolaWidget);
+		//clientThread.invoke(this::addOuraniaTeleWidget);
+		//clientThread.invoke(this::addBankEniolaWidget);
 		currentWorld = client.getWorld();
 	}
 
@@ -140,8 +147,8 @@ public class ElTestPlugin extends Plugin implements MouseListener, KeyListener {
 		log.info("Plugin stopped");
 		//clientThread.invoke(this::removePickerWidget);
 		//clientThread.invoke(this::removeMeleeWidget);
-		clientThread.invoke(this::removeOuraniaTeleWidget);
-		clientThread.invoke(this::removeBankEniolaWidget);
+		//clientThread.invoke(this::removeOuraniaTeleWidget);
+		//clientThread.invoke(this::removeBankEniolaWidget);
 	}
 
 	@Subscribe
@@ -196,9 +203,70 @@ public class ElTestPlugin extends Plugin implements MouseListener, KeyListener {
 	@Subscribe
 	private void onGameTick(GameTick gameTick)
 	{
-
-		if(client.getWorld()!=currentWorld){
-			addOuraniaTeleWidget();
+		/*if(!sellYet){
+			if(client.getWidget(300,1)!=null && !client.getWidget(300,1).isHidden()){
+				targetMenu=new MenuEntry("","",4,57,utils.getInventoryWidgetItem(562).getIndex(),19726336,false);
+				utils.delayMouseClick(utils.getInventoryWidgetItem(562).getCanvasBounds().getBounds(),sleepDelay());
+				sellYet=true;
+				return;
+			} else {
+				targetNpc=utils.findNearestNpc(2185);
+				if(targetNpc!=null){
+					targetMenu=new MenuEntry("","",targetNpc.getIndex(),11,0,0,false);
+					if(targetNpc.getConvexHull()!=null){
+						utils.delayMouseClick(targetNpc.getConvexHull().getBounds(),sleepDelay());
+					}else{
+						utils.delayMouseClick(getRandomNullPoint(),sleepDelay());
+					}
+					return;
+				}
+				return;
+			}
+		} else {
+			targetNpc=utils.findNearestNpc(2185);
+			if(targetNpc!=null){
+				sellYet=false;
+				targetMenu=new MenuEntry("","",targetNpc.getIndex(),11,0,0,false);
+				if(targetNpc.getConvexHull()!=null){
+					utils.delayMouseClick(targetNpc.getConvexHull().getBounds(),sleepDelay());
+				}else{
+					utils.delayMouseClick(getRandomNullPoint(),sleepDelay());
+				}
+				return;
+			}
+			return;
+		}*/
+		/*switch(sellState){
+			case 0:
+				targetNpc=utils.findNearestNpc(2185);
+				if(targetNpc!=null){
+					targetMenu=new MenuEntry("","",targetNpc.getIndex(),11,0,0,false);
+					if(targetNpc.getConvexHull()!=null){
+						utils.delayMouseClick(targetNpc.getConvexHull().getBounds(),sleepDelay());
+					}else{
+						utils.delayMouseClick(getRandomNullPoint(),sleepDelay());
+					}
+					return;
+				}
+				sellState=1;
+				return;
+			case 1:
+				targetMenu=new MenuEntry("","",4,57,utils.getInventoryWidgetItem(562).getIndex(),19726336,false);
+				utils.delayMouseClick(utils.getInventoryWidgetItem(562).getCanvasBounds().getBounds(),sleepDelay());
+				sellState=2;
+				return;
+			case 2:
+				if(client.getWidget(300,1)!=null && !client.getWidget(300,1).isHidden()){
+					targetMenu=new MenuEntry("","",1,57,11,19660801,false);
+					utils.delayMouseClick(client.getWidget(300,1).getBounds(),sleepDelay());
+				}
+				sellState=1;
+				return;
+		}*/
+		//log.info("sleep delay" + sleepDelay());
+		/*utils.setMenuEntry(null);
+		/*if(client.getWorld()!=currentWorld){
+			addPickerWidget();
 			addBankEniolaWidget();
 			currentWorld=client.getWorld();
 		}
@@ -224,7 +292,7 @@ public class ElTestPlugin extends Plugin implements MouseListener, KeyListener {
 			case PUSH:
 				hosidiusFavourFunction();
 				break;
-		}
+		}*/
 	}
 
 	private void addPickerWidget()
@@ -453,39 +521,62 @@ public class ElTestPlugin extends Plugin implements MouseListener, KeyListener {
 	@Subscribe
 	private void onMenuOptionClicked(MenuOptionClicked event)
 	{
-		log.debug(event.toString());
 		if(targetMenu!=null){
 			event.consume();
 			client.invokeMenuAction(targetMenu.getOption(),targetMenu.getTarget(),targetMenu.getIdentifier(),targetMenu.getOpcode(),targetMenu.getParam0(),targetMenu.getParam1());
 			targetMenu=null;
 		}
-		log.info(event.toString());
-		if(event.getOption().equals("action3") && event.getTarget().equals("button3")){
-			event.consume();
-			targetNpc = utils.findNearestNpc(1560);
-			if(targetNpc!=null){
-				client.invokeMenuAction("","",targetNpc.getIndex(),11,0,0);
+		/*if(startTest){
+			if(prayerToSwitch!=0){
+				switch(prayerToSwitch){
+					case 1:
+						event.consume();
+						client.invokeMenuAction("","",1,57,-1,35454993);
+						break;
+					case 2:
+						event.consume();
+						client.invokeMenuAction("","",1,57,-1,35454994);
+						break;
+					case 3:
+						event.consume();
+						client.invokeMenuAction("","",1,57,-1,35454995);
+						break;
+				}
+				prayerToSwitch=0;
+				return;
 			}
-			return;
-		} else if (event.getOption().equals("action2") && event.getTarget().equals("button2")){
-			event.consume();
-			targetNpc = utils.findNearestNpc(1560);
-			if(targetNpc!=null){
-				client.invokeMenuAction("","",targetNpc.getIndex(),11,0,0);
+
+			log.debug(event.toString());
+			if(targetMenu!=null){
+				event.consume();
+				client.invokeMenuAction(targetMenu.getOption(),targetMenu.getTarget(),targetMenu.getIdentifier(),targetMenu.getOpcode(),targetMenu.getParam0(),targetMenu.getParam1());
+				targetMenu=null;
 			}
-			return;
-		} else if (event.getOption().equals("action1") && event.getTarget().equals("button1")){
-			event.consume();
-			targetObject = utils.findNearestGameObject(26707);
-			if(targetObject!=null){
-				client.invokeMenuAction("","",targetObject.getId(),3,targetObject.getSceneMinLocation().getX(),targetObject.getSceneMinLocation().getY());
+			log.info(event.toString());
+			if(event.getOption().equals("action3") && event.getTarget().equals("button3")){
+				event.consume();
+				targetObject = utils.findNearestGameObject(29631);
+				if(targetObject!=null){
+					client.invokeMenuAction("","",targetObject.getId(),3,targetObject.getSceneMinLocation().getX(),targetObject.getSceneMinLocation().getY());
+				}
+				return;
+			} else if (event.getOption().equals("action2") && event.getTarget().equals("button2")){
+				event.consume();
+				targetNpc = utils.findNearestNpc(1560);
+				if(targetNpc!=null){
+					client.invokeMenuAction("","",targetNpc.getIndex(),11,0,0);
+				}
+				return;
+			} else if (event.getOption().equals("action1") && event.getTarget().equals("button1")){
+				event.consume();
+				utils.walk(new WorldPoint(3014,5622,0),1,0);
 			}
-		}
+		}*/
 	}
 
 	private long sleepDelay()
 	{
-		return utils.randomDelay(false, 60, 350, 100, 10);
+		return utils.randomDelay(false, 60, 350, 5, 40);
 	}
 
 	private int tickDelay()
@@ -587,7 +678,24 @@ public class ElTestPlugin extends Plugin implements MouseListener, KeyListener {
 
 	@Override
 	public void keyPressed(KeyEvent keyEvent) {
-		log.info("key released + " + keyEvent.getID());
+		switch (keyEvent.getKeyCode()){
+			case 112:
+				keyEvent.consume();
+				utils.delayMouseClick(new Point(0,0),0);
+				prayerToSwitch=1;
+				break;
+			case 113:
+				keyEvent.consume();
+				utils.delayMouseClick(new Point(0,0),0);
+				prayerToSwitch=2;
+				break;
+			case 114:
+				keyEvent.consume();
+				utils.delayMouseClick(new Point(0,0),0);
+				prayerToSwitch=3;
+				break;
+		}
+		log.info("key pressed + " + keyEvent.getKeyCode());
 	}
 
 	@Override

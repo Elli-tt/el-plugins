@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2019 Owain van Brakel <https://github.com/Owain94>
+ * Copyright (c) 2018, Andrew EP | ElPinche256 <https://github.com/ElPinche256>
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -22,30 +22,33 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+package net.runelite.client.plugins.ElBankStander;
 
-version = "2.0.4"
+import net.runelite.client.config.*;
 
-project.extra["PluginName"] = "El Planks" // This is the name that is used in the external plugin manager panel
-project.extra["PluginDescription"] = "Makes plank in your POH" // This is the description that is used in the external plugin manager panel
+@ConfigGroup("ElBankStander")
 
-dependencies {
-    compileOnly(group = "com.openosrs.externals", name = "botutils", version = "4.9.1+");
-}
-
-tasks {
-    jar {
-        manifest {
-            attributes(mapOf(
-                    "Plugin-Version" to project.version,
-                    "Plugin-Id" to nameToId(project.extra["PluginName"] as String),
-                    "Plugin-Provider" to project.extra["PluginProvider"],
-                    "Plugin-Dependencies" to
-                            arrayOf(
-                                    "botutils-plugin"
-                            ).joinToString(),
-                    "Plugin-Description" to project.extra["PluginDescription"],
-                    "Plugin-License" to project.extra["PluginLicense"]
-            ))
-        }
-    }
+public interface ElBankStanderConfig extends Config
+{
+	@ConfigTitleSection(
+			keyName = "instructionsTitle",
+			name = "Instructions",
+			description = "",
+			position = 0
+	)
+	default Title instructionsTitle()
+	{
+		return new Title();
+	}
+	@ConfigItem(
+			keyName = "instructions",
+			name = "",
+			description = "Instructions.",
+			position = 1,
+			titleSection = "instructionsTitle"
+	)
+	default String instructions()
+	{
+		return "This plugin is now premium";
+	}
 }

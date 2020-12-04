@@ -249,6 +249,9 @@ public class ElTeaksPlugin extends Plugin
 		{
 			return HANDLE_BREAK;
 		}
+		else if(utils.iterating){
+			return ITERATING;
+		}
 		else if(utils.isBankOpen()){
 			return getBankState();
 		} else if(checkForGroundItems()) {
@@ -333,11 +336,17 @@ public class ElTeaksPlugin extends Plugin
 				return FIND_TEAK;
 			}
 		} else {
-			if(player.getWorldArea().intersectsWith(SOUTH_SHORTCUT)){
-				return FIND_BANK;
+			if(config.type().equals(ElTeaksType.BANK)){
+				if(player.getWorldArea().intersectsWith(SOUTH_SHORTCUT)){
+					return FIND_BANK;
+				} else {
+					return USE_SHORTCUT;
+				}
 			} else {
-				return USE_SHORTCUT;
+				utils.inventoryItemsInteract(Collections.singleton(6333),37,false,true,config.sleepMin(),config.sleepMax());
+				return DROPPING;
 			}
+
 		}
 	}
 

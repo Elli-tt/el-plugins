@@ -36,7 +36,7 @@ subprojects {
     group = "com.openosrs.externals"
 
     project.extra["PluginProvider"] = "elli-tt"
-    project.extra["ProjectSupportUrl"] = "https://discord.gg/9fGzEDR"
+    project.extra["ProjectSupportUrl"] = "http://discord.gg/enDUcqH"
     project.extra["PluginLicense"] = "3-Clause BSD License"
 
     repositories {

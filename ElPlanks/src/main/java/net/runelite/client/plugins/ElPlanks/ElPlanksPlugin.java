@@ -379,7 +379,7 @@ public class ElPlanksPlugin extends Plugin
 
 	private void openHouseOptions()
 	{
-		targetMenu = new MenuEntry("","",1,57,-1,17104996,false);
+		targetMenu = new MenuEntry("","",1,57,-1,7602199,false);
 		utils.delayMouseClick(getRandomNullPoint(),sleepDelay());
 	}
 

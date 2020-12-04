@@ -247,6 +247,18 @@ public interface ElTeaksConfiguration extends Config
 	}
 
 	@ConfigItem(
+			keyName = "type",
+			name = "Type",
+			description = "Select which method you would like to use.",
+			position = 61,
+			titleSection = "teaksTitle"
+	)
+	default ElTeaksType type()
+	{
+		return ElTeaksType.BANK;
+	}
+
+	@ConfigItem(
 		keyName = "enableUI",
 		name = "Enable UI",
 		description = "Enable to turn on in game UI",

@@ -26,7 +26,10 @@
 rootProject.name = "Elliott Plugins"
 
 include(":ElAirs")
+include(":ElAstrals")
+include(":ElBankstander")
 include(":ElBarbarian")
+include(":ElBloods")
 include(":ElCooker")
 include(":ElFiremaker")
 include(":ElGemMine")
@@ -39,6 +42,7 @@ include(":ElSandstone")
 include(":ElSuperglass")
 include(":ElTeaks")
 include(":ElTest")
+include(":ElTickCooker")
 include(":ElTutorial")
 include(":ElZMI")
 
