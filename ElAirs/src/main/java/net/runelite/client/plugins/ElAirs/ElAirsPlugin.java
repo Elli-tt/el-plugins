@@ -353,8 +353,10 @@ public class ElAirsPlugin extends Plugin
 					} else if(config.mode().equals(TIARAS)){
 						if(!utils.inventoryItemContainsAmount(5525,14,false,true)){
 							withdrawX(5525);
+							return;
 						} else if(!utils.inventoryItemContainsAmount(1438,14,false,true)){
 							withdrawX(1438);
+							return;
 						}
 					}
 					timeout = tickDelay();
@@ -470,7 +472,7 @@ public class ElAirsPlugin extends Plugin
 			client.setSelectedItemSlot(utils.getInventoryWidgetItem(1438).getIndex());
 			client.setSelectedItemID(1438);
 			targetMenu = new MenuEntry("","",targetObject.getId(),1,targetObject.getSceneMinLocation().getX(),targetObject.getSceneMinLocation().getY(),false);
-			utils.setMenuEntry(targetMenu);
+			//utils.setMenuEntry(targetMenu);
 			if(targetObject.getConvexHull()!=null){
 				utils.delayMouseClick(targetObject.getConvexHull().getBounds(),sleepDelay());
 			} else {
@@ -485,15 +487,19 @@ public class ElAirsPlugin extends Plugin
 		targetObject = utils.findNearestGameObject(id);
 		if(targetObject!=null){
 			targetMenu = new MenuEntry("","",targetObject.getId(),opcode,targetObject.getSceneMinLocation().getX(),targetObject.getSceneMinLocation().getY(),false);
-			utils.setMenuEntry(targetMenu);
-			utils.delayMouseClick(targetObject.getConvexHull().getBounds(),sleepDelay());
+			//utils.setMenuEntry(targetMenu);
+			if(targetObject.getConvexHull()!=null){
+				utils.delayMouseClick(targetObject.getConvexHull().getBounds(),sleepDelay());
+			} else {
+				utils.delayMouseClick(new Point(0,0),sleepDelay());
+			}
 		}
 	}
 
 	private void depositItem(int id)
 	{
 		targetMenu = new MenuEntry("", "", 8, 57, utils.getInventoryWidgetItem(id).getIndex(),983043,false);
-		utils.setMenuEntry(targetMenu);
+		//utils.setMenuEntry(targetMenu);
 		utils.delayMouseClick(utils.getInventoryWidgetItem(id).getCanvasBounds(),sleepDelay());
 	}
 
@@ -503,7 +509,7 @@ public class ElAirsPlugin extends Plugin
 			timeout+=3;
 		} else {
 			targetMenu = new MenuEntry("", "", (client.getVarbitValue(6590) == 3) ? 1 : 5, MenuOpcode.CC_OP.getId(), utils.getBankItemWidget(ID).getIndex(), 786444, false);
-			utils.setMenuEntry(targetMenu);
+			//utils.setMenuEntry(targetMenu);
 			clickBounds = utils.getBankItemWidget(ID).getBounds()!=null ? utils.getBankItemWidget(ID).getBounds() : new Rectangle(client.getCenterX() - 50, client.getCenterY() - 50, 100, 100);
 			utils.delayMouseClick(clickBounds,sleepDelay());
 		}
