@@ -271,6 +271,37 @@ public interface ElAirsConfiguration extends Config
 	}
 
 	@ConfigItem(
+			keyName = "useStams",
+			name = "Use Staminas",
+			description = "Tick this if you want to use stamina potions.",
+			position = 140,
+			titleSection = "elAirsTitle"
+	)
+	default boolean useStams() { return false; }
+
+	@ConfigItem(
+			keyName = "minEnergy",
+			name = "Minimum Energy",
+			description = "Minimum energy before stam pot drank",
+			position = 141,
+			hidden = true,
+			unhide = "useStams",
+			titleSection = "elAirsTitle"
+	)
+	default int minEnergy() { return 50; }
+
+	@ConfigItem(
+			keyName = "minEnergyStam",
+			name = "Minimum Energy to always stam",
+			description = "Minimum energy to always stam pot drink",
+			position = 142,
+			hidden = true,
+			unhide = "useStams",
+			titleSection = "elAirsTitle"
+	)
+	default int minEnergyStam() { return 25; }
+
+	@ConfigItem(
 		keyName = "enableUI",
 		name = "Enable UI",
 		description = "Enable to turn on in game UI",

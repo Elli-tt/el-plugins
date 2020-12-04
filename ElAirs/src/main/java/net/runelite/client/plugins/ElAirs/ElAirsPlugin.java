@@ -173,6 +173,7 @@ public class ElAirsPlugin extends Plugin
 			}
 			else
 			{
+				startTeaks=false;
 				resetVals();
 			}
 		}
@@ -310,6 +311,43 @@ public class ElAirsPlugin extends Plugin
 					timeout = tickDelay();
 					break;
 				case WITHDRAW_ITEMS:
+					if(config.useStams()) {
+						if (client.getVar(Varbits.RUN_SLOWED_DEPLETION_ACTIVE) == 0 && checkRunEnergy() < config.minEnergy()) {
+							if (utils.inventoryContains(12631)) {
+								targetMenu = new MenuEntry("Drink", "<col=ff9040>Stamina potion(1)</col>", 9, 1007, utils.getInventoryWidgetItem(12631).getIndex(), 983043, false);
+								utils.delayMouseClick(utils.getInventoryWidgetItem(12631).getCanvasBounds(), sleepDelay());
+								return;
+							} else {
+								if (utils.inventoryFull()) {
+									utils.depositAll();
+									return;
+								} else {
+									targetMenu = new MenuEntry("Withdraw-1", "<col=ff9040>Stamina potion(1)</col>", 1, 57, utils.getBankItemWidget(12631).getIndex(), 786444, false);
+									utils.delayMouseClick(utils.getBankItemWidget(12631).getBounds(), sleepDelay());
+									return;
+								}
+							}
+						} else if (checkRunEnergy() < config.minEnergyStam()) {
+							if (utils.inventoryContains(12631)) {
+								targetMenu = new MenuEntry("Drink", "<col=ff9040>Stamina potion(1)</col>", 9, 1007, utils.getInventoryWidgetItem(12631).getIndex(), 983043, false);
+								utils.delayMouseClick(utils.getInventoryWidgetItem(12631).getCanvasBounds(), sleepDelay());
+								return;
+							} else {
+								if (utils.inventoryFull()) {
+									utils.depositAll();
+									return;
+								} else {
+									targetMenu = new MenuEntry("Withdraw-1", "<col=ff9040>Stamina potion(1)</col>", 1, 57, utils.getBankItemWidget(12631).getIndex(), 786444, false);
+									utils.delayMouseClick(utils.getBankItemWidget(12631).getBounds(), sleepDelay());
+									return;
+								}
+							}
+						}
+					}
+					if(utils.inventoryContains(229)){
+						utils.depositAll();
+						return;
+					}
 					if(config.mode().equals(RUNES)){
 						utils.withdrawAllItem(essenceValue);
 					} else if(config.mode().equals(TIARAS)){
@@ -416,6 +454,12 @@ public class ElAirsPlugin extends Plugin
 	@Subscribe
 	private void onMenuOptionClicked(MenuOptionClicked event){
 		log.debug(event.toString());
+		if(targetMenu!=null){
+			event.consume();
+			client.invokeMenuAction(targetMenu.getOption(), targetMenu.getTarget(), targetMenu.getIdentifier(), targetMenu.getOpcode(),
+					targetMenu.getParam0(), targetMenu.getParam1());
+			targetMenu = null;
+		}
 	}
 
 	private void useTalismanOnAltar()
@@ -464,4 +508,14 @@ public class ElAirsPlugin extends Plugin
 			utils.delayMouseClick(clickBounds,sleepDelay());
 		}
 	}
+
+		private int checkRunEnergy()
+		{
+			try{
+				return client.getEnergy();
+			} catch (Exception ignored) {
+
+			}
+			return 0;
+		}
 }
