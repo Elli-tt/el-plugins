@@ -289,8 +289,12 @@ public class ElTeaksPlugin extends Plugin
 					utils.handleRun(30, 20);
 					timeout--;
 					break;
-				case FIND_TEAK:
-					chopTeak();
+				case FIND_TREE:
+					if(config.log().equals(ElTeaksLog.TEAK)){
+						chopTeak();
+					} else {
+						chopMahog();
+					}
 					timeout = tickDelay();
 					break;
 				case HANDLE_BREAK:
@@ -333,7 +337,7 @@ public class ElTeaksPlugin extends Plugin
 			if(player.getWorldArea().intersectsWith(SOUTH_SHORTCUT)){
 				return USE_SHORTCUT;
 			} else {
-				return FIND_TEAK;
+				return FIND_TREE;
 			}
 		} else {
 			if(config.type().equals(ElTeaksType.BANK)){
@@ -343,7 +347,12 @@ public class ElTeaksPlugin extends Plugin
 					return USE_SHORTCUT;
 				}
 			} else {
-				utils.inventoryItemsInteract(Collections.singleton(6333),37,false,true,config.sleepMin(),config.sleepMax());
+				if(config.log().equals(ElTeaksLog.TEAK)){
+					utils.inventoryItemsInteract(Collections.singleton(6333),37,false,true,config.sleepMin(),config.sleepMax());
+				} else {
+					utils.inventoryItemsInteract(Collections.singleton(6332),37,false,true,config.sleepMin(),config.sleepMax());
+				}
+
 				return DROPPING;
 			}
 
@@ -393,6 +402,25 @@ public class ElTeaksPlugin extends Plugin
 		}
 	}
 
+	private void chopMahog()
+	{
+		if(client.getVarbitValue(4953)==7){
+			targetObject=utils.findNearestGameObject(30482);
+			if(targetObject!=null){
+				targetMenu=new MenuEntry("","",targetObject.getId(),3,targetObject.getSceneMinLocation().getX(),targetObject.getSceneMinLocation().getY(),false);
+				utils.setMenuEntry(targetMenu);
+				utils.delayMouseClick(targetObject.getConvexHull().getBounds(),sleepDelay());
+			}
+		} else if(client.getVarbitValue(4955)==7){
+			targetObject=utils.findNearestGameObject(30480);
+			if(targetObject!=null){
+				targetMenu=new MenuEntry("","",targetObject.getId(),3,targetObject.getSceneMinLocation().getX(),targetObject.getSceneMinLocation().getY(),false);
+				utils.setMenuEntry(targetMenu);
+				utils.delayMouseClick(targetObject.getConvexHull().getBounds(),sleepDelay());
+			}
+		}
+	}
+
 	@Subscribe
 	private void onItemContainerChanged(ItemContainerChanged event){
 		if (event.getContainerId() != 93 || !startTeaks)
@@ -400,12 +428,24 @@ public class ElTeaksPlugin extends Plugin
 			return;
 		} else {
 			if(oldInventCount==-1){
-				event.getItemContainer().count(6333);
+				if(config.log().equals(ElTeaksLog.TEAK)){
+					event.getItemContainer().count(6333);
+				} else {
+					event.getItemContainer().count(6332);
+				}
+
 			}
-			if(event.getItemContainer().count(6333)>oldInventCount){
-				teaksCut++;
+			if(config.log().equals(ElTeaksLog.TEAK)) {
+				if (event.getItemContainer().count(6333) > oldInventCount) {
+					teaksCut++;
+				}
+				oldInventCount = event.getItemContainer().count(6333);
+			} else {
+				if (event.getItemContainer().count(6332) > oldInventCount) {
+					teaksCut++;
+				}
+				oldInventCount = event.getItemContainer().count(6332);
 			}
-			oldInventCount=event.getItemContainer().count(6333);
 		}
 	}
 

@@ -259,6 +259,18 @@ public interface ElTeaksConfiguration extends Config
 	}
 
 	@ConfigItem(
+			keyName = "log",
+			name = "Log",
+			description = "Select which log you would like to chop",
+			position = 62,
+			titleSection = "teaksTitle"
+	)
+	default ElTeaksLog log()
+	{
+		return ElTeaksLog.TEAK;
+	}
+
+	@ConfigItem(
 		keyName = "enableUI",
 		name = "Enable UI",
 		description = "Enable to turn on in game UI",

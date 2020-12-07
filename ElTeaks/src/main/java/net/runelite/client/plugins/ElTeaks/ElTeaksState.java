@@ -3,7 +3,7 @@ package net.runelite.client.plugins.ElTeaks;
 public enum ElTeaksState
 {
 	ANIMATING,
-	FIND_TEAK,
+	FIND_TREE,
 	MOVING,
 	TIMEOUT,
 	BANK_NOT_FOUND,
