@@ -23,7 +23,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-version = "2.0.4"
+version = "2.0.5"
 
 project.extra["PluginName"] = "El Planks" // This is the name that is used in the external plugin manager panel
 project.extra["PluginDescription"] = "Makes plank in your POH" // This is the description that is used in the external plugin manager panel
