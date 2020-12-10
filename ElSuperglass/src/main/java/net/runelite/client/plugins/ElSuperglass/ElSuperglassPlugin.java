@@ -23,6 +23,8 @@ import org.pf4j.Extension;
 import net.runelite.client.plugins.botutils.BotUtils;
 import java.awt.*;
 import java.time.Instant;
+import java.util.ArrayList;
+import java.util.List;
 
 import static net.runelite.client.plugins.botutils.Banks.BANK_SET;
 
@@ -70,6 +72,8 @@ public class ElSuperglassPlugin extends Plugin
 	int glassLeft = -1;
 	Instant botTimer;
 
+	List<Integer> BANKS = new ArrayList<>();
+
 	// Provides our config
 	@Provides
 	ElSuperglassConfig provideConfig(ConfigManager configManager)
@@ -113,6 +117,10 @@ public class ElSuperglassPlugin extends Plugin
 				targetMenu = null;
 				botTimer = Instant.now();
 				overlayManager.add(overlay);
+				BANKS.addAll(BANK_SET);
+				BANKS.add(10517);
+				BANKS.add(31582);
+
 			} else {
 				shutDown();
 			}
@@ -317,11 +325,15 @@ public class ElSuperglassPlugin extends Plugin
 			return;
 		}
 		GameObject targetObject = new GameObjectQuery()
-				.idEquals(BANK_SET)
+				.idEquals(BANKS)
 				.result(client)
 				.nearestTo(client.getLocalPlayer());
 		if(targetObject!=null){
-			targetMenu = new MenuEntry("","",targetObject.getId(),4,targetObject.getLocalLocation().getSceneX(),targetObject.getLocalLocation().getSceneY(),false);
+			if(targetObject.getId()==31582){
+				targetMenu = new MenuEntry("","",targetObject.getId(),4,targetObject.getLocalLocation().getSceneX(),targetObject.getLocalLocation().getSceneY()-1,false);
+			} else {
+				targetMenu = new MenuEntry("","",targetObject.getId(),4,targetObject.getLocalLocation().getSceneX(),targetObject.getLocalLocation().getSceneY(),false);
+			}
 			utils.delayMouseClick(getRandomNullPoint(),sleepDelay());
 		}
 	}
