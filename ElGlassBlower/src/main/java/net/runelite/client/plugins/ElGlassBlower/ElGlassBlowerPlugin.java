@@ -78,6 +78,7 @@ public class ElGlassBlowerPlugin extends Plugin
 	int currentAmountGlass = 0;
 
 	List<Integer> delays = new ArrayList<Integer>();
+	List<Integer> BANKS = new ArrayList<>();
 
 	// Provides our config
 	@Provides
@@ -128,6 +129,10 @@ public class ElGlassBlowerPlugin extends Plugin
 				targetMenu = null;
 				botTimer = Instant.now();
 				overlayManager.add(overlay);
+				BANKS.addAll(BANK_SET);
+				BANKS.add(10517);
+				BANKS.add(31582);
+				BANKS.add(26707);
 			} else {
 				shutDown();
 			}
@@ -356,11 +361,17 @@ public class ElGlassBlowerPlugin extends Plugin
 			return;
 		}
 		GameObject targetObject = new GameObjectQuery()
-				.idEquals(BANK_SET)
+				.idEquals(BANKS)
 				.result(client)
 				.nearestTo(client.getLocalPlayer());
 		if(targetObject!=null){
-			targetMenu = new MenuEntry("","",targetObject.getId(),4,targetObject.getLocalLocation().getSceneX(),targetObject.getLocalLocation().getSceneY(),false);
+			if(targetObject.getId()==31582){
+				targetMenu = new MenuEntry("","",targetObject.getId(),4,targetObject.getLocalLocation().getSceneX(),targetObject.getLocalLocation().getSceneY()-1,false);
+			} else if(targetObject.getId()==26707){
+				targetMenu = new MenuEntry("","",targetObject.getId(),3,targetObject.getLocalLocation().getSceneX(),targetObject.getLocalLocation().getSceneY(),false);
+			} else {
+				targetMenu = new MenuEntry("","",targetObject.getId(),4,targetObject.getLocalLocation().getSceneX(),targetObject.getLocalLocation().getSceneY(),false);
+			}
 			utils.delayMouseClick(getRandomNullPoint(),sleepDelay());
 		}
 

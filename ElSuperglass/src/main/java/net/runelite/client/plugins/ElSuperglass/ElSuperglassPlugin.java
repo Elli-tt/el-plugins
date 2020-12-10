@@ -120,6 +120,7 @@ public class ElSuperglassPlugin extends Plugin
 				BANKS.addAll(BANK_SET);
 				BANKS.add(10517);
 				BANKS.add(31582);
+				BANKS.add(26707);
 
 			} else {
 				shutDown();
@@ -331,6 +332,8 @@ public class ElSuperglassPlugin extends Plugin
 		if(targetObject!=null){
 			if(targetObject.getId()==31582){
 				targetMenu = new MenuEntry("","",targetObject.getId(),4,targetObject.getLocalLocation().getSceneX(),targetObject.getLocalLocation().getSceneY()-1,false);
+			} else if(targetObject.getId()==26707){
+				targetMenu = new MenuEntry("","",targetObject.getId(),3,targetObject.getLocalLocation().getSceneX(),targetObject.getLocalLocation().getSceneY(),false);
 			} else {
 				targetMenu = new MenuEntry("","",targetObject.getId(),4,targetObject.getLocalLocation().getSceneX(),targetObject.getLocalLocation().getSceneY(),false);
 			}
