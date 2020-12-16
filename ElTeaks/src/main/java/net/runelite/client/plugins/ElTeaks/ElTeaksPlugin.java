@@ -254,7 +254,7 @@ public class ElTeaksPlugin extends Plugin
 		}
 		else if(utils.isBankOpen()){
 			return getBankState();
-		} else if(checkForGroundItems()) {
+		} else if(config.lootNests() && checkForGroundItems()) {
 			return PICKING_UP;
 		}
 		else if(client.getLocalPlayer().getAnimation()!=-1){

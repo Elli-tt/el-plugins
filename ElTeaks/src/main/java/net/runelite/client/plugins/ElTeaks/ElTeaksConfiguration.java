@@ -271,6 +271,18 @@ public interface ElTeaksConfiguration extends Config
 	}
 
 	@ConfigItem(
+			keyName = "lootNests",
+			name = "Loot Nests",
+			description = "Select if you want to loot nests.",
+			position = 63,
+			titleSection = "teaksTitle"
+	)
+	default boolean lootNests()
+	{
+		return true;
+	}
+
+	@ConfigItem(
 		keyName = "enableUI",
 		name = "Enable UI",
 		description = "Enable to turn on in game UI",
