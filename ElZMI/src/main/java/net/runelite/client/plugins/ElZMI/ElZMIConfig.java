@@ -52,10 +52,18 @@ public interface ElZMIConfig extends Config
 	default boolean giantPouch() { return false; }
 
 	@ConfigItem(
+			keyName = "noPouch",
+			name = "Use No Pouches",
+			description = "Use no pouches",
+			position = 2
+	)
+	default boolean noPouch() { return false; }
+
+	@ConfigItem(
 			keyName = "daeyalt",
 			name = "Use Daeyalt Essence",
 			description = "Use daeyalt essence",
-			position = 2
+			position = 3
 	)
 	default boolean daeyalt() { return false; }
 

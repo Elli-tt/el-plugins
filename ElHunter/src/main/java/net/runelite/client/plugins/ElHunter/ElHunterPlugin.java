@@ -453,7 +453,7 @@ public class ElHunterPlugin extends Plugin
 		} else if(checkForGroundItems()){
 			return PICKING_UP;
 		} else {
-			if(utils.getLocalGameObjects(10,9373).size()+utils.getLocalGameObjects(10,9379).size()+utils.getLocalGameObjects(10,9349).size()+utils.getLocalGameObjects(10,9345).size()+utils.getLocalGameObjects(10,9346).size()+utils.getLocalGameObjects(10,9344).size()==0){
+			if(utils.getLocalGameObjects(10,9373).size()+utils.getLocalGameObjects(10,9379).size()+utils.getLocalGameObjects(10,9349).size()+utils.getLocalGameObjects(10,9347).size()+utils.getLocalGameObjects(10,9348).size()+utils.getLocalGameObjects(10,9345).size()+utils.getLocalGameObjects(10,9346).size()+utils.getLocalGameObjects(10,9344).size()==0){
 				if(client.getLocalPlayer().getWorldLocation().distanceTo2D(startPoint)>3){
 					utils.walk(startPoint,0,sleepDelay());
 					return WALKING;
@@ -479,6 +479,13 @@ public class ElHunterPlugin extends Plugin
 					}
 				} else if(utils.getLocalGameObjects(10,9379).size()>0){
 					targetObject=utils.findNearestGameObject(9379);
+					if(targetObject!=null){
+						targetMenu = new MenuEntry("","",targetObject.getId(),3,targetObject.getSceneMinLocation().getX(),targetObject.getSceneMinLocation().getY(),false);
+						utils.delayMouseClick(targetObject.getConvexHull().getBounds(), sleepDelay());
+						return CHECKING_TRAP;
+					}
+				} else if(utils.getLocalGameObjects(10,9348).size()>0){
+					targetObject=utils.findNearestGameObject(9348);
 					if(targetObject!=null){
 						targetMenu = new MenuEntry("","",targetObject.getId(),3,targetObject.getSceneMinLocation().getX(),targetObject.getSceneMinLocation().getY(),false);
 						utils.delayMouseClick(targetObject.getConvexHull().getBounds(), sleepDelay());

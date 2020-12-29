@@ -526,27 +526,44 @@ public class ElTestPlugin extends Plugin implements MouseListener, KeyListener {
 			client.invokeMenuAction(targetMenu.getOption(),targetMenu.getTarget(),targetMenu.getIdentifier(),targetMenu.getOpcode(),targetMenu.getParam0(),targetMenu.getParam1());
 			targetMenu=null;
 		}
-		/*if(startTest){
+		if(startTest){
 			if(prayerToSwitch!=0){
 				switch(prayerToSwitch){
 					case 1:
 						event.consume();
-						client.invokeMenuAction("","",1,57,-1,35454993);
+						client.invokeMenuAction("","",1,57,-1,35454993); //pray mage
 						break;
 					case 2:
 						event.consume();
-						client.invokeMenuAction("","",1,57,-1,35454994);
+						client.invokeMenuAction("","",1,57,-1,35454994); //pray range
 						break;
 					case 3:
 						event.consume();
-						client.invokeMenuAction("","",1,57,-1,35454995);
+						client.invokeMenuAction("","",1,57,-1,35454995); //pray melee
+						break;
+					case 4:
+						event.consume();
+						client.invokeMenuAction("","",1,57,-1,10485774); //quick pray
+						break;
+					case 5:
+						event.consume();
+						for(WidgetItem widgetItem : utils.getAllInventoryItems()){
+							if(widgetItem.getId()==5698){
+								client.invokeMenuAction("","",5698,34,widgetItem.getIndex(),9764864); //equip slot 1
+							}
+						}
+
+						break;
+					case 6:
+						event.consume();
+						client.invokeMenuAction("","",1,57,-1,38862884); //spec
 						break;
 				}
 				prayerToSwitch=0;
 				return;
 			}
 
-			log.debug(event.toString());
+			/*log.debug(event.toString());
 			if(targetMenu!=null){
 				event.consume();
 				client.invokeMenuAction(targetMenu.getOption(),targetMenu.getTarget(),targetMenu.getIdentifier(),targetMenu.getOpcode(),targetMenu.getParam0(),targetMenu.getParam1());
@@ -570,8 +587,8 @@ public class ElTestPlugin extends Plugin implements MouseListener, KeyListener {
 			} else if (event.getOption().equals("action1") && event.getTarget().equals("button1")){
 				event.consume();
 				utils.walk(new WorldPoint(3014,5622,0),1,0);
-			}
-		}*/
+			}*/
+		}
 	}
 
 	private long sleepDelay()
@@ -693,6 +710,21 @@ public class ElTestPlugin extends Plugin implements MouseListener, KeyListener {
 				keyEvent.consume();
 				utils.delayMouseClick(new Point(0,0),0);
 				prayerToSwitch=3;
+				break;
+			case 115:
+				keyEvent.consume();
+				utils.delayMouseClick(new Point(0,0),0);
+				prayerToSwitch=4;
+				break;
+			case 116:
+				keyEvent.consume();
+				utils.delayMouseClick(new Point(0,0),0);
+				prayerToSwitch=5;
+				break;
+			case 117:
+				keyEvent.consume();
+				utils.delayMouseClick(new Point(0,0),0);
+				prayerToSwitch=6;
 				break;
 		}
 		log.info("key pressed + " + keyEvent.getKeyCode());

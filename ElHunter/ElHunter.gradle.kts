@@ -23,7 +23,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-version = "2.1.5"
+version = "2.1.6"
 
 project.extra["PluginName"] = "El Hunter" // This is the name that is used in the external plugin manager panel
 project.extra["PluginDescription"] = "Hunts for you" // This is the description that is used in the external plugin manager panel

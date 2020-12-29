@@ -32,10 +32,10 @@ class ElTestOverlay extends OverlayPanel
     private ElTestOverlay(final Client client, final ElTestPlugin plugin, final ElTestConfig config)
     {
         super(plugin);
-        setPosition(OverlayPosition.DYNAMIC);
+        setPosition(OverlayPosition.ABOVE_CHATBOX_RIGHT);
         this.plugin = plugin;
         this.config = config;
-        getMenuEntries().add(new OverlayMenuEntry(RUNELITE_OVERLAY_CONFIG, OPTION_CONFIGURE, "El Astrals Overlay"));
+        getMenuEntries().add(new OverlayMenuEntry(RUNELITE_OVERLAY_CONFIG, OPTION_CONFIGURE, "El Test Overlay"));
         setPriority(OverlayPriority.HIGHEST);
     }
 
@@ -50,34 +50,25 @@ class ElTestOverlay extends OverlayPanel
 
         TableComponent tableComponent = new TableComponent();
         tableComponent.setColumnAlignments(TableAlignment.LEFT, TableAlignment.RIGHT);
-        Duration duration = Duration.between(plugin.botTimer, Instant.now());
-        timeFormat = (duration.toHours() < 1) ? "mm:ss" : "HH:mm:ss";
-        tableComponent.addRow("Time:", formatDuration(duration.toMillis(), timeFormat));
+        //Duration duration = Duration.between(plugin.botTimer, Instant.now());
+        //timeFormat = (duration.toHours() < 1) ? "mm:ss" : "HH:mm:ss";
+        //tableComponent.addRow("Time:", formatDuration(duration.toMillis(), timeFormat));
         if(plugin.status!=null){
             tableComponent.addRow("Status:", plugin.status.toString());
         } else {
-            tableComponent.addRow("Status:", "Starting...");
+            tableComponent.addRow("Status:", "ACTIVE");
         }
 
 
         if (!tableComponent.isEmpty())
         {
-            panelComponent.setBackgroundColor(ColorUtil.fromHex("#121212")); //Material Dark default
             panelComponent.setPreferredSize(new Dimension(200, 200));
             panelComponent.setBorder(new Rectangle(5, 5, 5, 5));
             panelComponent.getChildren().add(TitleComponent.builder()
-                    .text("El Test")
-                    .color(ColorUtil.fromHex("#40C4FF"))
-                    .build());
-            panelComponent.getChildren().add(TitleComponent.builder()
-                    .text("Elli-tt#4728")
+                    .text("El Test (Elli-tt#4728)")
                     .color(ColorUtil.fromHex("#40C4FF"))
                     .build());
             panelComponent.getChildren().add(tableComponent);
-            panelComponent.getChildren().add(TitleComponent.builder()
-                    .text("WIP")
-                    .color(ColorUtil.fromHex("#40C4FF"))
-                    .build());
         }
         return super.render(graphics);
     }

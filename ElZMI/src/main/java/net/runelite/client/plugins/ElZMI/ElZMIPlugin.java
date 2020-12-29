@@ -120,6 +120,7 @@ public class ElZMIPlugin extends Plugin
 				targetMenu = null;
 				botTimer = Instant.now();
 				overlayManager.add(overlay);
+				setValues();
 			} else {
 				shutDown();
 			}
@@ -141,7 +142,9 @@ public class ElZMIPlugin extends Plugin
 	private void setValues()
 	{
 		runecraftProgress = 0;
-		if(config.giantPouch()){
+		if(config.noPouch()){
+			REQUIRED_ITEMS=List.of(12791);
+		} else if(config.giantPouch()){
 			if(config.trouver()){
 				REQUIRED_ITEMS = List.of(5509,5510,5512,5514,24416);
 			} else {
@@ -352,7 +355,13 @@ public class ElZMIPlugin extends Plugin
 			} else if(runecraftProgress==8){
 				return CLICKING_ALTAR;
 			} else if(runecraftProgress<15){
-				return EMPTYING_POUCHES;
+				if(config.noPouch()){
+					craftingTimer=-1;
+					runecraftProgress=15;
+					return TELEPORT_OURANIA;
+				} else {
+					return EMPTYING_POUCHES;
+				}
 			} else if(runecraftProgress==15){
 				craftingTimer=-1;
 				return TELEPORT_OURANIA;
@@ -431,7 +440,11 @@ public class ElZMIPlugin extends Plugin
 				return WITHDRAW_FOOD;
 			}
 		}
-		if(!config.giantPouch()){
+		if(config.noPouch()){
+			if(runecraftProgress==0){
+				runecraftProgress=6;
+			}
+		} else if(!config.giantPouch()){
 			if(runecraftProgress==0){
 				runecraftProgress=2;
 			}

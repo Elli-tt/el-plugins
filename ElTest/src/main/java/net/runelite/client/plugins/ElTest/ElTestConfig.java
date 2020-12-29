@@ -55,6 +55,95 @@ public interface ElTestConfig extends Config
 	}
 
 	@ConfigTitleSection(
+			keyName = "hotkeyTitle",
+			name = "HotKeys",
+			description = "",
+			position = 1
+	)
+	default Title hotkeyTitle()
+	{
+		return new Title();
+	}
+
+	@ConfigItem(
+			keyName = "key1",
+			name = "Key 1",
+			description = "Select the first key you would like to use.",
+			position = 0,
+			titleSection = "hotkeyTitle"
+
+	)
+	default ElTestKey key1()
+	{
+		return ElTestKey.F1;
+	}
+
+	@ConfigItem(
+			keyName = "action1",
+			name = "Action 1",
+			description = "Select the first action you would like to use.",
+			position = 1,
+			titleSection = "hotkeyTitle"
+
+	)
+	default ElTestAction action1()
+	{
+		return ElTestAction.QUICK_PRAY;
+	}
+
+	@ConfigItem(
+			keyName = "key2",
+			name = "Key 2",
+			description = "Select the second key you would like to use.",
+			position = 2,
+			titleSection = "hotkeyTitle"
+
+	)
+	default ElTestKey key2()
+	{
+		return ElTestKey.F2;
+	}
+
+	@ConfigItem(
+			keyName = "action2",
+			name = "Action 2",
+			description = "Select the second action you would like to use.",
+			position = 3,
+			titleSection = "hotkeyTitle"
+
+	)
+	default ElTestAction action2()
+	{
+		return ElTestAction.QUICK_PRAY;
+	}
+
+	@ConfigItem(
+			keyName = "key3",
+			name = "Key 3",
+			description = "Select the third key you would like to use.",
+			position = 4,
+			titleSection = "hotkeyTitle"
+
+	)
+	default ElTestKey key3()
+	{
+		return ElTestKey.F1;
+	}
+
+	@ConfigItem(
+			keyName = "action3",
+			name = "Action 3",
+			description = "Select the first action you would like to use.",
+			position = 5,
+			titleSection = "hotkeyTitle"
+
+	)
+	default ElTestAction action3()
+	{
+		return ElTestAction.QUICK_PRAY;
+	}
+
+	@ConfigTitleSection(
 			keyName = "uiTitle",
 			name = "UI Config",
 			description = "",
@@ -64,6 +153,8 @@ public interface ElTestConfig extends Config
 	{
 		return new Title();
 	}
+
+
 
 	@ConfigItem(
 			keyName = "enableUI",

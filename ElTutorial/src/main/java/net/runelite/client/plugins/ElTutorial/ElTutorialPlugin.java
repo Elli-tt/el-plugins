@@ -164,6 +164,43 @@ public class ElTutorialPlugin extends Plugin
 	}
 
 	@Subscribe
+	private void onClientTick(ClientTick clientTick)
+	{
+		if(clientTickBreak>0){
+			clientTickBreak--;
+		} else {
+			clientTickBreak=utils.getRandomIntBetweenRange(5,10);
+			varbitValue = client.getVarpValue(281);
+			switch(varbitValue) {
+				case 1:
+					switch (tutorialSectionProgress) {
+						case 1:
+						case 2:
+							changeLookClient(44498956);
+							if (utils.getRandomIntBetweenRange(0, 5) == 0) {
+								tutorialSectionProgress++;
+							}
+							break;
+						case 3:
+							changeLookClient(44498991);
+							if (utils.getRandomIntBetweenRange(0, 5) == 0) {
+								tutorialSectionProgress++;
+							}
+							break;
+						case 4:
+						case 5:
+							changeLookClient(44498995);
+							if (utils.getRandomIntBetweenRange(0, 5) == 0) {
+								tutorialSectionProgress++;
+							}
+							break;
+					}
+					break;
+			}
+		}
+	}
+
+	@Subscribe
 	private void onMenuOptionClicked(MenuOptionClicked event)
 	{
 		log.debug(event.toString());
@@ -264,30 +301,42 @@ public class ElTutorialPlugin extends Plugin
 								break;
 							}
 						} else if(config.female()){
-							changeLook(44499010);
+							changeLookClient(44499010);
+							clientTickCounter=100;
 							tutorialSectionProgress++;
 							break;
 						} else if(!config.female()){
+							clientTickCounter=100;
 							tutorialSectionProgress++;
 							break;
 						}
 						break;
-					case 1:
+					/*case 1:
 					case 2:
 						changeLook(44498956);
-						tutorialSectionProgress++;
+						if(utils.getRandomIntBetweenRange(0,2)==0){
+							tutorialSectionProgress++;
+						}
 						break;
 					case 3:
 						changeLook(44498991);
+						if(utils.getRandomIntBetweenRange(0,2)==0){
+							tutorialSectionProgress++;
+						}
 						tutorialSectionProgress++;
 						break;
 					case 4:
 					case 5:
 						changeLook(44498995);
+						if(utils.getRandomIntBetweenRange(0,2)==0){
+							tutorialSectionProgress++;
+						}
 						tutorialSectionProgress++;
 						break;
+					*/
 					case 6:
 						changeLook(44499012);
+						tutorialSectionProgress++;
 						break;
 				}
 				break;
@@ -913,12 +962,22 @@ public class ElTutorialPlugin extends Plugin
 		utils.delayMouseClick(getRandomNullPoint(), sleepDelay());
 	}
 
+	private void changeLookClient(int id)
+	{
+		targetMenu = new MenuEntry("","",1,57,-1,id,false);
+		utils.delayMouseClick(getRandomNullPoint(), 0);
+	}
+
 	private void openDoor(int id)
 	{
 		targetWall = utils.findNearestWallObject(id);
 		if(targetWall!=null){
 			targetMenu = new MenuEntry("","",targetWall.getId(),3,targetWall.getLocalLocation().getSceneX(),targetWall.getLocalLocation().getSceneY(),false);
-			utils.delayMouseClick(targetWall.getConvexHull().getBounds(), sleepDelay());
+			if(targetWall.getConvexHull()!=null){
+				utils.delayMouseClick(targetWall.getConvexHull().getBounds(), sleepDelay());
+			} else {
+				utils.delayMouseClick(getRandomNullPoint(),sleepDelay());
+			}
 		}
 	}
 
