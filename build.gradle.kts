@@ -11,7 +11,7 @@ plugins {
     checkstyle
 }
 
-project.extra["GithubUrl"] = "https://github.com/Elli-tt/El-Externals"
+project.extra["GithubUrl"] = "https://github.com/Elli-tt/El-Plugins"
 
 apply<BootstrapPlugin>()
 

@@ -1381,7 +1381,7 @@ public class ElUtils extends Plugin
 	public List<WidgetItem> getInventoryItems(String itemName)
 	{
 		return new InventoryWidgetItemQuery()
-			.filter(i -> client.getItemDefinition(i.getId())
+			.filter(i -> client.getItemComposition(i.getId())
 				.getName()
 				.toLowerCase()
 				.contains(itemName))
@@ -1608,7 +1608,7 @@ public class ElUtils extends Plugin
 		}
 
 		WidgetItem inventoryItem = new InventoryWidgetItemQuery()
-			.filter(i -> client.getItemDefinition(i.getId())
+			.filter(i -> client.getItemComposition(i.getId())
 				.getName()
 				.toLowerCase()
 				.contains(itemName))

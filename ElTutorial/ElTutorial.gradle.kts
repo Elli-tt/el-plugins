@@ -23,7 +23,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-version = "3.0.0"
+version = "3.0.1"
 
 project.extra["PluginName"] = "El Tutorial" // This is the name that is used in the external plugin manager panel
 project.extra["PluginDescription"] = "Completes tutorial island for you" // This is the description that is used in the external plugin manager panel
