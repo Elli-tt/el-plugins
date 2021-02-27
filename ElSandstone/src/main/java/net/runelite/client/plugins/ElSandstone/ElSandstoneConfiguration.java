@@ -23,7 +23,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package net.runelite.client.plugins.ElSandstone;
+package net.runelite.client.plugins.elsandstone;
 
 import net.runelite.client.config.Button;
 import net.runelite.client.config.Config;
@@ -42,10 +42,7 @@ public interface ElSandstoneConfiguration extends Config
 		description = "Configure how the bot handles sleep delays",
 		position = 2
 	)
-	default boolean delayConfig()
-	{
-		return false;
-	}
+	String delayConfig = "delayConfig";
 
 	@Range(
 		min = 0,
@@ -129,10 +126,7 @@ public interface ElSandstoneConfiguration extends Config
 		description = "Configure how the bot handles game tick delays, 1 game tick equates to roughly 600ms",
 		position = 8
 	)
-	default boolean delayTickConfig()
-	{
-		return false;
-	}
+	String delayTickConfig = "delayTickConfig";
 
 	@Range(
 		min = 0,

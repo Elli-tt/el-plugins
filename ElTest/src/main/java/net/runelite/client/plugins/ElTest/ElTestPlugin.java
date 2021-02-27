@@ -1,4 +1,4 @@
-package net.runelite.client.plugins.ElTest;
+package net.runelite.client.plugins.eltest;
 
 import com.google.inject.Provides;
 import javax.inject.Inject;
@@ -14,7 +14,6 @@ import net.runelite.client.eventbus.Subscribe;
 import net.runelite.client.events.ConfigChanged;
 import net.runelite.client.game.ItemManager;
 import net.runelite.client.game.SpriteManager;
-import net.runelite.client.game.SpriteOverride;
 import net.runelite.client.input.KeyListener;
 import net.runelite.client.input.KeyManager;
 import net.runelite.client.input.MouseListener;
@@ -22,31 +21,26 @@ import net.runelite.client.input.MouseManager;
 import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginDependency;
 import net.runelite.client.plugins.PluginDescriptor;
-import net.runelite.client.plugins.PluginType;
 import net.runelite.client.ui.overlay.OverlayManager;
 import net.runelite.client.callback.ClientThread;
-import net.runelite.client.util.ImageUtil;
+import net.runelite.client.plugins.elutils.ElUtils;
+import net.runelite.client.plugins.elbreakhandler.ElBreakHandler;
 import org.pf4j.Extension;
-import net.runelite.client.plugins.botutils.BotUtils;
+
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.net.*;
 import java.time.Instant;
 import java.util.*;
-import java.util.List;
 import java.util.stream.Stream;
 
-import static net.runelite.client.plugins.ElTest.ElTestState.*;
+import static net.runelite.client.plugins.eltest.ElTestState.*;
 
 @Extension
-@PluginDependency(BotUtils.class)
+@PluginDependency(ElUtils.class)
 @PluginDescriptor(
 		name = "El Test",
-		description = "Test",
-		type = PluginType.SKILLING
+		description = "Test"
 )
 @Slf4j
 public class ElTestPlugin extends Plugin implements MouseListener, KeyListener {
@@ -54,7 +48,7 @@ public class ElTestPlugin extends Plugin implements MouseListener, KeyListener {
 	private Client client;
 
 	@Inject
-	private BotUtils utils;
+	private ElUtils utils;
 
 	@Inject
 	private ConfigManager configManager;
@@ -203,7 +197,7 @@ public class ElTestPlugin extends Plugin implements MouseListener, KeyListener {
 	@Subscribe
 	private void onGameTick(GameTick gameTick)
 	{
-		/*if(!sellYet){
+		if(!sellYet){
 			if(client.getWidget(300,1)!=null && !client.getWidget(300,1).isHidden()){
 				targetMenu=new MenuEntry("","",4,57,utils.getInventoryWidgetItem(562).getIndex(),19726336,false);
 				utils.delayMouseClick(utils.getInventoryWidgetItem(562).getCanvasBounds().getBounds(),sleepDelay());
@@ -235,7 +229,7 @@ public class ElTestPlugin extends Plugin implements MouseListener, KeyListener {
 				return;
 			}
 			return;
-		}*/
+		}
 		/*switch(sellState){
 			case 0:
 				targetNpc=utils.findNearestNpc(2185);
@@ -314,8 +308,7 @@ public class ElTestPlugin extends Plugin implements MouseListener, KeyListener {
 		picker = parent.createChild(-1, WidgetType.GRAPHIC);
 
 		log.info("Picker is {}.{} [{}]", WidgetInfo.TO_GROUP(picker.getId()), WidgetInfo.TO_CHILD(picker.getId()), picker.getIndex());
-
-		client.getSpriteOverrides().put(-300, ImageUtil.getImageSprite(ImageUtil.getResourceStreamFromClass(ElTestPlugin.class, "ouraniachin.png"), client));
+		//client.getSpriteOverrides().put(-300, ImageUtil.getImageSprite(ImageUtil.getResourceStreamFromClass(ElTestPlugin.class, "ouraniachin.png"), client));
 		picker.setSpriteId(-300);
 		picker.setOriginalWidth(30);
 		picker.setOriginalHeight(30);
@@ -423,7 +416,7 @@ public class ElTestPlugin extends Plugin implements MouseListener, KeyListener {
 
 		bankEniola = parent.createChild(-1, WidgetType.GRAPHIC);
 
-		client.getSpriteOverrides().put(-301, ImageUtil.getImageSprite(ImageUtil.getResourceStreamFromClass(ElTestPlugin.class, "eniola.png"), client));
+		//client.getSpriteOverrides().put(-301, ImageUtil.getImageSprite(ImageUtil.getResourceStreamFromClass(ElTestPlugin.class, "eniola.png"), client));
 		bankEniola.setSpriteId(-301);
 		bankEniola.setOriginalWidth(30);
 		bankEniola.setOriginalHeight(30);
@@ -522,47 +515,37 @@ public class ElTestPlugin extends Plugin implements MouseListener, KeyListener {
 	private void onMenuOptionClicked(MenuOptionClicked event)
 	{
 		if(targetMenu!=null){
-			event.consume();
-			client.invokeMenuAction(targetMenu.getOption(),targetMenu.getTarget(),targetMenu.getIdentifier(),targetMenu.getOpcode(),targetMenu.getParam0(),targetMenu.getParam1());
-			targetMenu=null;
+			menuAction(event, targetMenu.getOption(),targetMenu.getTarget(),targetMenu.getIdentifier(),targetMenu.getMenuAction(),targetMenu.getParam0(),targetMenu.getParam1());
 		}
 		if(startTest){
 			if(prayerToSwitch!=0){
 				switch(prayerToSwitch){
 					case 1:
-						event.consume();
-						client.invokeMenuAction("","",1,57,-1,35454993); //pray mage
+						menuAction(event,"","",1,MenuAction.CC_OP,-1,35454993); //pray mage
 						break;
 					case 2:
-						event.consume();
-						client.invokeMenuAction("","",1,57,-1,35454994); //pray range
+						menuAction(event,"","",1,MenuAction.CC_OP,-1,35454994); //pray range
 						break;
 					case 3:
-						event.consume();
-						client.invokeMenuAction("","",1,57,-1,35454995); //pray melee
+						menuAction(event,"","",1,MenuAction.CC_OP,-1,35454995); //pray melee
 						break;
 					case 4:
-						event.consume();
-						client.invokeMenuAction("","",1,57,-1,10485774); //quick pray
+						menuAction(event,"Activate","Quick-prayers",1,MenuAction.CC_OP,-1,10485774); //quick pray
 						break;
 					case 5:
-						event.consume();
 						for(WidgetItem widgetItem : utils.getAllInventoryItems()){
 							if(widgetItem.getId()==5698){
-								client.invokeMenuAction("","",5698,34,widgetItem.getIndex(),9764864); //equip slot 1
+								menuAction(event,"","",5698,MenuAction.ITEM_SECOND_OPTION,widgetItem.getIndex(),9764864); //equip slot 1
 							}
 						}
 
 						break;
 					case 6:
-						event.consume();
-						client.invokeMenuAction("","",1,57,-1,38862884); //spec
+						menuAction(event,"","",1,MenuAction.CC_OP,-1,38862884); //spec
 						break;
 				}
 				prayerToSwitch=0;
-				return;
 			}
-
 			/*log.debug(event.toString());
 			if(targetMenu!=null){
 				event.consume();
@@ -588,7 +571,18 @@ public class ElTestPlugin extends Plugin implements MouseListener, KeyListener {
 				event.consume();
 				utils.walk(new WorldPoint(3014,5622,0),1,0);
 			}*/
+			targetMenu=null;
 		}
+	}
+
+	public void menuAction(MenuOptionClicked menuOptionClicked, String option, String target, int identifier, MenuAction menuAction, int param0, int param1)
+	{
+		menuOptionClicked.setMenuOption(option);
+		menuOptionClicked.setMenuTarget(target);
+		menuOptionClicked.setId(identifier);
+		menuOptionClicked.setMenuAction(menuAction);
+		menuOptionClicked.setActionParam(param0);
+		menuOptionClicked.setWidgetId(param1);
 	}
 
 	private long sleepDelay()

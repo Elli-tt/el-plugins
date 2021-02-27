@@ -23,16 +23,14 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package net.runelite.client.plugins.ElBarbarian;
+package net.runelite.client.plugins.elbarbarian;
 
 import net.runelite.client.config.Button;
 import net.runelite.client.config.Config;
 import net.runelite.client.config.ConfigGroup;
 import net.runelite.client.config.ConfigItem;
 import net.runelite.client.config.ConfigSection;
-import net.runelite.client.config.ConfigTitleSection;
 import net.runelite.client.config.Range;
-import net.runelite.client.config.Title;
 
 @ConfigGroup("ElBarbarian")
 public interface ElBarbarianConfiguration extends Config
@@ -44,10 +42,7 @@ public interface ElBarbarianConfiguration extends Config
 		description = "Configure how the bot handles sleep delays",
 		position = 2
 	)
-	default boolean delayConfig()
-	{
-		return false;
-	}
+	String delayConfig = "delayConfig";
 
 	@Range(
 		min = 0,
@@ -131,10 +126,7 @@ public interface ElBarbarianConfiguration extends Config
 		description = "Configure how the bot handles game tick delays, 1 game tick equates to roughly 600ms",
 		position = 8
 	)
-	default boolean delayTickConfig()
-	{
-		return false;
-	}
+	String delayTickConfig = "delayTickConfig";
 
 	@Range(
 		min = 0,
@@ -212,23 +204,20 @@ public interface ElBarbarianConfiguration extends Config
 		return false;
 	}
 
-	@ConfigTitleSection(
+	@ConfigSection(
 		keyName = "instructionsTitle",
 		name = "Instructions",
 		description = "",
 		position = 16
 	)
-	default Title instructionsTitle()
-	{
-		return new Title();
-	}
+	String instructionsTitle = "instructionsTitle";
 
 	@ConfigItem(
 		keyName = "instructions",
 		name = "",
 		description = "Instructions. Don't enter anything into this field",
 		position = 20,
-		titleSection = "instructionsTitle"
+		section = "instructionsTitle"
 	)
 	default String instructions()
 	{
@@ -236,23 +225,20 @@ public interface ElBarbarianConfiguration extends Config
 			"Cooks food caught.";
 	}
 
-	@ConfigTitleSection(
+	@ConfigSection(
 		keyName = "barbarianfisherTitle",
 		name = "Barbarian Fisher Configuration",
 		description = "",
 		position = 60
 	)
-	default Title barbarianfisherTitle()
-	{
-		return new Title();
-	}
+	String barbarianfisherTitle = "barbarianfisherTitle";
 
 	@ConfigItem(
 		keyName = "enableUI",
 		name = "Enable UI",
 		description = "Enable to turn on in game UI",
 		position = 140,
-		titleSection = "barbarianfisherTitle"
+		section = "barbarianfisherTitle"
 	)
 	default boolean enableUI()
 	{

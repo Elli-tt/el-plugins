@@ -23,10 +23,10 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package net.runelite.client.plugins.ElCooker;
+package net.runelite.client.plugins.elcooker;
 
 import com.google.inject.Provides;
-import com.owain.chinbreakhandler.ChinBreakHandler;
+import net.runelite.client.plugins.elbreakhandler.ElBreakHandler;
 import java.awt.Rectangle;
 import java.time.Instant;
 import java.util.*;
@@ -44,21 +44,20 @@ import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginDependency;
 import net.runelite.client.plugins.PluginDescriptor;
 import net.runelite.client.plugins.PluginManager;
-import net.runelite.client.plugins.PluginType;
-import net.runelite.client.plugins.botutils.BotUtils;
+import net.runelite.client.plugins.elutils.ElUtils;
 import net.runelite.client.ui.overlay.OverlayManager;
 import org.pf4j.Extension;
-import static net.runelite.client.plugins.ElCooker.ElCookerState.*;
+
+import static net.runelite.client.plugins.elcooker.ElCookerState.*;
 
 
 @Extension
-@PluginDependency(BotUtils.class)
+@PluginDependency(ElUtils.class)
 @PluginDescriptor(
 	name = "El Cooker",
 	enabledByDefault = false,
 	description = "Cooks food.",
-	tags = {"cook, food, cooking, el"},
-	type = PluginType.SKILLING
+	tags = {"cook, food, cooking, el"}
 )
 @Slf4j
 public class ElCookerPlugin extends Plugin
@@ -70,7 +69,7 @@ public class ElCookerPlugin extends Plugin
 	private ElCookerConfiguration config;
 
 	@Inject
-	private BotUtils utils;
+	private ElUtils utils;
 
 	@Inject
 	private ConfigManager configManager;
@@ -85,7 +84,7 @@ public class ElCookerPlugin extends Plugin
 	private ElCookerOverlay overlay;
 
 	@Inject
-	private ChinBreakHandler chinBreakHandler;
+	private ElBreakHandler elBreakHandler;
 
 
 	ElCookerState state;
@@ -124,20 +123,20 @@ public class ElCookerPlugin extends Plugin
 	@Override
 	protected void startUp()
 	{
-		chinBreakHandler.registerPlugin(this);
+		elBreakHandler.registerPlugin(this);
 	}
 
 	@Override
 	protected void shutDown()
 	{
 		resetVals();
-		chinBreakHandler.unregisterPlugin(this);
+		elBreakHandler.unregisterPlugin(this);
 	}
 
 	private void resetVals()
 	{
 		overlayManager.remove(overlay);
-		chinBreakHandler.stopPlugin(this);
+		elBreakHandler.stopPlugin(this);
 		state = null;
 		timeout = 0;
 		botTimer = null;
@@ -161,7 +160,7 @@ public class ElCookerPlugin extends Plugin
 			if (!startCooker)
 			{
 				startCooker = true;
-				chinBreakHandler.startPlugin(this);
+				elBreakHandler.startPlugin(this);
 				state = null;
 				targetMenu = null;
 				botTimer = Instant.now();
@@ -349,7 +348,7 @@ public class ElCookerPlugin extends Plugin
 			timeout = tickDelay();
 			return MOVING;
 		}
-		if (chinBreakHandler.shouldBreak(this))
+		if (elBreakHandler.shouldBreak(this))
 		{
 			return HANDLE_BREAK;
 		}
@@ -365,7 +364,7 @@ public class ElCookerPlugin extends Plugin
 	@Subscribe
 	private void onGameTick(GameTick tick)
 	{
-		if (!startCooker || chinBreakHandler.isBreakActive(this))
+		if (!startCooker || elBreakHandler.isBreakActive(this))
 		{
 			return;
 		}
@@ -401,7 +400,7 @@ public class ElCookerPlugin extends Plugin
 					break;
 				case HANDLE_BREAK:
 					firstTime=true;
-					chinBreakHandler.startBreak(this);
+					elBreakHandler.startBreak(this);
 					timeout = 10;
 					break;
 				case ANIMATING:
@@ -501,7 +500,7 @@ public class ElCookerPlugin extends Plugin
 	private void onMenuOptionClicked(MenuOptionClicked event){
 		log.debug(event.toString());
 		if(config.valueFinder()){
-			utils.sendGameMessage("Id: " + event.getIdentifier() + ", Op Code: " + event.getOpcode() + ".");
+			utils.sendGameMessage("Id: " + event.getId() + ", Op Code: " + event.getMenuAction() + ".");
 		}
 	}
 
@@ -510,7 +509,7 @@ public class ElCookerPlugin extends Plugin
 			utils.withdrawItemAmount(ID,4);
 			timeout+=3;
 		} else {
-			targetMenu = new MenuEntry("", "", (client.getVarbitValue(6590) == 3) ? 1 : 5, MenuOpcode.CC_OP.getId(), utils.getBankItemWidget(ID).getIndex(), 786444, false);
+			targetMenu = new MenuEntry("", "", (client.getVarbitValue(6590) == 3) ? 1 : 5, MenuAction.CC_OP.getId(), utils.getBankItemWidget(ID).getIndex(), 786444, false);
 			utils.setMenuEntry(targetMenu);
 			clickBounds = utils.getBankItemWidget(ID).getBounds()!=null ? utils.getBankItemWidget(ID).getBounds() : new Rectangle(client.getCenterX() - 50, client.getCenterY() - 50, 100, 100);
 			utils.delayMouseClick(clickBounds,sleepDelay());

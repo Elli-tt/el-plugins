@@ -1,4 +1,4 @@
-package net.runelite.client.plugins.ElBarbarian;
+package net.runelite.client.plugins.elbarbarian;
 
 public enum ElBarbarianState
 {

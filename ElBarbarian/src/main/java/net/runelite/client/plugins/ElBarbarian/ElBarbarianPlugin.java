@@ -23,13 +23,11 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package net.runelite.client.plugins.ElBarbarian;
+package net.runelite.client.plugins.elbarbarian;
 
 import com.google.inject.Provides;
-import com.owain.chinbreakhandler.ChinBreakHandler;
+import net.runelite.client.plugins.elbreakhandler.ElBreakHandler;
 import java.awt.Rectangle;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.time.Instant;
 import java.util.*;
 import javax.inject.Inject;
@@ -45,21 +43,20 @@ import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginDependency;
 import net.runelite.client.plugins.PluginDescriptor;
 import net.runelite.client.plugins.PluginManager;
-import net.runelite.client.plugins.PluginType;
-import net.runelite.client.plugins.botutils.BotUtils;
+import net.runelite.client.plugins.elutils.ElUtils;
 import net.runelite.client.ui.overlay.OverlayManager;
 import org.pf4j.Extension;
-import static net.runelite.client.plugins.ElBarbarian.ElBarbarianState.*;
+
+import static net.runelite.client.plugins.elbarbarian.ElBarbarianState.*;
 
 
 @Extension
-@PluginDependency(BotUtils.class)
+@PluginDependency(ElUtils.class)
 @PluginDescriptor(
 	name = "El Barbarian",
 	enabledByDefault = false,
 	description = "Fishes and cooks in Barbarian Village",
-	tags = {"fish, barbarian, fishing, el"},
-	type = PluginType.SKILLING
+	tags = {"fish, barbarian, fishing, el"}
 )
 @Slf4j
 public class ElBarbarianPlugin extends Plugin
@@ -71,7 +68,7 @@ public class ElBarbarianPlugin extends Plugin
 	private ElBarbarianConfiguration config;
 
 	@Inject
-	private BotUtils utils;
+	private ElUtils utils;
 
 	@Inject
 	private ConfigManager configManager;
@@ -86,7 +83,7 @@ public class ElBarbarianPlugin extends Plugin
 	private ElBarbarianOverlay overlay;
 
 	@Inject
-	private ChinBreakHandler chinBreakHandler;
+	private ElBreakHandler elBreakHandler;
 
 
 	ElBarbarianState state;
@@ -116,20 +113,20 @@ public class ElBarbarianPlugin extends Plugin
 	@Override
 	protected void startUp()
 	{
-		chinBreakHandler.registerPlugin(this);
+		elBreakHandler.registerPlugin(this);
 	}
 
 	@Override
 	protected void shutDown()
 	{
 		resetVals();
-		chinBreakHandler.unregisterPlugin(this);
+		elBreakHandler.unregisterPlugin(this);
 	}
 
 	private void resetVals()
 	{
 		overlayManager.remove(overlay);
-		chinBreakHandler.stopPlugin(this);
+		elBreakHandler.stopPlugin(this);
 		state = null;
 		timeout = 0;
 		botTimer = null;
@@ -152,7 +149,7 @@ public class ElBarbarianPlugin extends Plugin
 			if (!startBarbarianFisher)
 			{
 				startBarbarianFisher = true;
-				chinBreakHandler.startPlugin(this);
+				elBreakHandler.startPlugin(this);
 				state = null;
 				targetMenu = null;
 				botTimer = Instant.now();
@@ -266,7 +263,7 @@ public class ElBarbarianPlugin extends Plugin
 		if(client.getLocalPlayer().getAnimation()!=-1){
 			return ANIMATING;
 		}
-		if (chinBreakHandler.shouldBreak(this))
+		if (elBreakHandler.shouldBreak(this))
 		{
 			return HANDLE_BREAK;
 		}
@@ -280,7 +277,7 @@ public class ElBarbarianPlugin extends Plugin
 	@Subscribe
 	private void onGameTick(GameTick tick)
 	{
-		if (!startBarbarianFisher || chinBreakHandler.isBreakActive(this))
+		if (!startBarbarianFisher || elBreakHandler.isBreakActive(this))
 		{
 			return;
 		}
@@ -331,7 +328,7 @@ public class ElBarbarianPlugin extends Plugin
 					resetVals();
 					break;
 				case HANDLE_BREAK:
-					chinBreakHandler.startBreak(this);
+					elBreakHandler.startBreak(this);
 					timeout = 10;
 					break;
 				case ANIMATING:

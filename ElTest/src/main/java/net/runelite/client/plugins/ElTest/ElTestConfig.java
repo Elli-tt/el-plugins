@@ -22,7 +22,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package net.runelite.client.plugins.ElTest;
+package net.runelite.client.plugins.eltest;
 
 import net.runelite.client.config.*;
 
@@ -31,46 +31,40 @@ import net.runelite.client.config.*;
 public interface ElTestConfig extends Config
 {
 
-	@ConfigTitleSection(
+	@ConfigSection(
 			keyName = "instructionsTitle",
 			name = "Instructions",
 			description = "",
 			position = 0
 	)
-	default Title instructionsTitle()
-	{
-		return new Title();
-	}
+	String instructionsTitle = "instructionsTitle";
 
 	@ConfigItem(
 			keyName = "instructions",
 			name = "",
 			description = "Instructions. Don't enter anything into this field",
 			position = 0,
-			titleSection = "instructionsTitle"
+			section = "instructionsTitle"
 	)
 	default String instructions()
 	{
 		return "Test";
 	}
 
-	@ConfigTitleSection(
+	@ConfigSection(
 			keyName = "hotkeyTitle",
 			name = "HotKeys",
 			description = "",
 			position = 1
 	)
-	default Title hotkeyTitle()
-	{
-		return new Title();
-	}
+	String hotkeyTitle = "hotkeyTitle";
 
 	@ConfigItem(
 			keyName = "key1",
 			name = "Key 1",
 			description = "Select the first key you would like to use.",
 			position = 0,
-			titleSection = "hotkeyTitle"
+			section = "hotkeyTitle"
 
 	)
 	default ElTestKey key1()
@@ -83,7 +77,7 @@ public interface ElTestConfig extends Config
 			name = "Action 1",
 			description = "Select the first action you would like to use.",
 			position = 1,
-			titleSection = "hotkeyTitle"
+			section = "hotkeyTitle"
 
 	)
 	default ElTestAction action1()
@@ -96,7 +90,7 @@ public interface ElTestConfig extends Config
 			name = "Key 2",
 			description = "Select the second key you would like to use.",
 			position = 2,
-			titleSection = "hotkeyTitle"
+			section = "hotkeyTitle"
 
 	)
 	default ElTestKey key2()
@@ -109,7 +103,7 @@ public interface ElTestConfig extends Config
 			name = "Action 2",
 			description = "Select the second action you would like to use.",
 			position = 3,
-			titleSection = "hotkeyTitle"
+			section = "hotkeyTitle"
 
 	)
 	default ElTestAction action2()
@@ -122,7 +116,7 @@ public interface ElTestConfig extends Config
 			name = "Key 3",
 			description = "Select the third key you would like to use.",
 			position = 4,
-			titleSection = "hotkeyTitle"
+			section = "hotkeyTitle"
 
 	)
 	default ElTestKey key3()
@@ -135,7 +129,7 @@ public interface ElTestConfig extends Config
 			name = "Action 3",
 			description = "Select the first action you would like to use.",
 			position = 5,
-			titleSection = "hotkeyTitle"
+			section = "hotkeyTitle"
 
 	)
 	default ElTestAction action3()
@@ -143,16 +137,13 @@ public interface ElTestConfig extends Config
 		return ElTestAction.QUICK_PRAY;
 	}
 
-	@ConfigTitleSection(
+	@ConfigSection(
 			keyName = "uiTitle",
 			name = "UI Config",
 			description = "",
 			position = 140
 	)
-	default Title uiTitle()
-	{
-		return new Title();
-	}
+	String uiTitle = "uiTitle";
 
 
 
@@ -161,7 +152,7 @@ public interface ElTestConfig extends Config
 			name = "Enable UI",
 			description = "Enable to turn on in game UI",
 			position = 140,
-			titleSection = "uiTitle"
+			section = "uiTitle"
 	)
 	default boolean enableUI()
 	{

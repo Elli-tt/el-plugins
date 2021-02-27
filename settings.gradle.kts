@@ -23,28 +23,24 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-rootProject.name = "Elliott Plugins"
+rootProject.name = "el externals"
 
-include(":ElAirs")
-include(":ElAstrals")
-include(":ElBankstander")
-include(":ElBarbarian")
-include(":ElBloods")
-include(":ElCooker")
-include(":ElFiremaker")
-include(":ElGemMine")
-include(":ElGlassBlower")
-include(":ElHunter")
-include(":ElKarambwans")
-include(":ElMessHall")
-include(":ElPlanks")
-include(":ElSandstone")
-include(":ElSuperglass")
-include(":ElTeaks")
-include(":ElTest")
-include(":ElTickCooker")
-include(":ElTutorial")
-include(":ElZMI")
+include(":elairs")
+include(":elbarbarian")
+include(":elbreakhandler")
+include(":elcooker")
+include(":eldiscord")
+include(":elfiremaker")
+include(":elglassblower")
+include(":elhunterfree")
+include(":elincenseburner")
+include(":elkarambwansfree")
+include(":elmesshall")
+include(":elsandstone")
+include(":elsuperglass")
+include(":eltest")
+include(":eltutorial")
+include(":elutils")
 
 for (project in rootProject.children) {
     project.apply {

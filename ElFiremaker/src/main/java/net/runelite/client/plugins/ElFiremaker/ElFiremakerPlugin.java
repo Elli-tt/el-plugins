@@ -1,4 +1,4 @@
-package net.runelite.client.plugins.ElFiremaker;
+package net.runelite.client.plugins.elfiremaker;
 
 import com.google.inject.Provides;
 import javax.inject.Inject;
@@ -18,10 +18,11 @@ import net.runelite.client.game.ItemManager;
 import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginDependency;
 import net.runelite.client.plugins.PluginDescriptor;
-import net.runelite.client.plugins.PluginType;
-import net.runelite.client.plugins.botutils.BotUtils;
+import net.runelite.client.plugins.elutils.ElUtils;
+import net.runelite.client.plugins.elbreakhandler.ElBreakHandler;
 import net.runelite.client.ui.overlay.OverlayManager;
 import org.pf4j.Extension;
+
 import java.awt.*;
 import java.time.Instant;
 import java.util.ArrayList;
@@ -29,14 +30,13 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import static net.runelite.client.plugins.ElFiremaker.ElFiremakerState.*;
+import static net.runelite.client.plugins.elfiremaker.ElFiremakerState.*;
 
 @Extension
-@PluginDependency(BotUtils.class)
+@PluginDependency(ElUtils.class)
 @PluginDescriptor(
 	name = "El Firemaker",
-	description = "Makes fires for you",
-	type = PluginType.SKILLING
+	description = "Makes fires for you"
 )
 @Slf4j
 public class ElFiremakerPlugin extends Plugin
@@ -46,7 +46,7 @@ public class ElFiremakerPlugin extends Plugin
 	private Client client;
 
 	@Inject
-	private BotUtils utils;
+	private ElUtils utils;
 
 	@Inject
 	private ConfigManager configManager;
@@ -268,7 +268,7 @@ public class ElFiremakerPlugin extends Plugin
 				state=LIGHT_FIRST;
 				return;
 			}
-			targetMenu = new MenuEntry("Use","<col=ff9040>Tinderbox<col=ffffff> -> <col=ff9040>"+itemManager.getItemDefinition(config.logId()).getName(),config.logId(),31,utils.getInventoryWidgetItem(config.logId()).getIndex(),9764864,false);
+			targetMenu = new MenuEntry("Use","<col=ff9040>Tinderbox<col=ffffff> -> <col=ff9040>"+itemManager.getItemComposition(config.logId()).getName(),config.logId(),31,utils.getInventoryWidgetItem(config.logId()).getIndex(),9764864,false);
 			utils.setMenuEntry(targetMenu);
 			utils.delayMouseClick(getRandomNullPoint(),sleepDelay());
 			timeout = tickDelay();

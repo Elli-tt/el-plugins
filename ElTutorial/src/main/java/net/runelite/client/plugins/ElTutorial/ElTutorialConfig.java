@@ -22,7 +22,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package net.runelite.client.plugins.ElTutorial;
+package net.runelite.client.plugins.eltutorial;
 
 import net.runelite.client.config.*;
 
@@ -31,46 +31,40 @@ import net.runelite.client.config.*;
 public interface ElTutorialConfig extends Config
 {
 
-	@ConfigTitleSection(
+	@ConfigSection(
 			keyName = "instructionsTitle",
 			name = "Instructions",
 			description = "",
 			position = 0
 	)
-	default Title instructionsTitle()
-	{
-		return new Title();
-	}
+	String instructionsTitle = "instructionsTitle";
 
 	@ConfigItem(
 			keyName = "instructions",
 			name = "",
 			description = "Instructions. Don't enter anything into this field",
 			position = 0,
-			titleSection = "instructionsTitle"
+			section = "instructionsTitle"
 	)
 	default String instructions()
 	{
 		return "Select from the dropdown which account type you would like to create.";
 	}
 
-	@ConfigTitleSection(
+	@ConfigSection(
 			keyName = "generalTitle",
 			name = "General Config",
 			description = "",
 			position = 1
 	)
-	default Title generalTitle()
-	{
-		return new Title();
-	}
+	String generalTitle = "generalTitle";
 
 	@ConfigItem(
 			keyName = "type",
 			name = "Type",
 			description = "Select which type of account you would like.",
 			position = 1,
-			titleSection = "generalTitle"
+			section = "generalTitle"
 	)
 	default ElTutorialType type()
 	{
@@ -82,7 +76,7 @@ public interface ElTutorialConfig extends Config
 			name = "Female Character",
 			description = "Click here to make your character female.",
 			position = 2,
-			titleSection = "generalTitle"
+			section = "generalTitle"
 	)
 	default boolean female()
 	{
@@ -94,7 +88,7 @@ public interface ElTutorialConfig extends Config
 			name = "Bank Pin (Iron Only)",
 			description = "Enter your bank pin here.",
 			position = 3,
-			titleSection = "generalTitle"
+			section = "generalTitle"
 	)
 	default String bankPin()
 	{
@@ -102,23 +96,20 @@ public interface ElTutorialConfig extends Config
 	}
 
 
-	@ConfigTitleSection(
+	@ConfigSection(
 			keyName = "delayTitle",
 			name = "Delay Config",
 			description = "",
 			position = 40
 	)
-	default Title delayTitle()
-	{
-		return new Title();
-	}
+	String delayTitle = "delayTitle";
 
 	@ConfigItem(
 			keyName = "customDelays",
 			name = "Use Custom Delays",
 			description = "Click here to use custom delays",
 			position = 40,
-			titleSection = "delayTitle"
+			section = "delayTitle"
 	)
 	default boolean customDelays()
 	{
@@ -130,7 +121,7 @@ public interface ElTutorialConfig extends Config
 			name = "Sleep Min",
 			description = "Enter minimum sleep delay here.",
 			position = 41,
-			titleSection = "delayTitle",
+			section = "delayTitle",
 			hidden=true,
 			unhide="customDelays"
 	)
@@ -144,7 +135,7 @@ public interface ElTutorialConfig extends Config
 			name = "Sleep Max",
 			description = "Enter maximum sleep delay here.",
 			position = 42,
-			titleSection = "delayTitle",
+			section = "delayTitle",
 			hidden=true,
 			unhide="customDelays"
 	)
@@ -158,7 +149,7 @@ public interface ElTutorialConfig extends Config
 			name = "Sleep Deviation",
 			description = "Enter sleep delay deviation here.",
 			position = 43,
-			titleSection = "delayTitle",
+			section = "delayTitle",
 			hidden=true,
 			unhide="customDelays"
 	)
@@ -172,7 +163,7 @@ public interface ElTutorialConfig extends Config
 			name = "Sleep Target",
 			description = "Enter target sleep delay here.",
 			position = 44,
-			titleSection = "delayTitle",
+			section = "delayTitle",
 			hidden=true,
 			unhide="customDelays"
 	)
@@ -186,7 +177,7 @@ public interface ElTutorialConfig extends Config
 			name = "Sleep Weighted Distribution",
 			description = "Click here to use a weighted distribution.",
 			position = 45,
-			titleSection = "delayTitle",
+			section = "delayTitle",
 			hidden=true,
 			unhide="customDelays"
 	)
@@ -200,7 +191,7 @@ public interface ElTutorialConfig extends Config
 			name = "Tick Min",
 			description = "Enter minimum tick delay here.",
 			position = 46,
-			titleSection = "delayTitle",
+			section = "delayTitle",
 			hidden=true,
 			unhide="customDelays"
 	)
@@ -214,7 +205,7 @@ public interface ElTutorialConfig extends Config
 			name = "Tick Max",
 			description = "Enter maximum tick delay here.",
 			position = 47,
-			titleSection = "delayTitle",
+			section = "delayTitle",
 			hidden=true,
 			unhide="customDelays"
 	)
@@ -228,7 +219,7 @@ public interface ElTutorialConfig extends Config
 			name = "Tick Deviation",
 			description = "Enter tick delay deviation here.",
 			position = 48,
-			titleSection = "delayTitle",
+			section = "delayTitle",
 			hidden=true,
 			unhide="customDelays"
 	)
@@ -242,7 +233,7 @@ public interface ElTutorialConfig extends Config
 			name = "Tick Target",
 			description = "Enter target tick delay here.",
 			position = 49,
-			titleSection = "delayTitle",
+			section = "delayTitle",
 			hidden=true,
 			unhide="customDelays"
 	)
@@ -256,7 +247,7 @@ public interface ElTutorialConfig extends Config
 			name = "Tick Weighted Distribution",
 			description = "Click here to use a weighted distribution.",
 			position = 50,
-			titleSection = "delayTitle",
+			section = "delayTitle",
 			hidden=true,
 			unhide="customDelays"
 	)
@@ -265,23 +256,20 @@ public interface ElTutorialConfig extends Config
 		return false;
 	}
 
-	@ConfigTitleSection(
+	@ConfigSection(
 			keyName = "uiTitle",
 			name = "UI Config",
 			description = "",
 			position = 140
 	)
-	default Title uiTitle()
-	{
-		return new Title();
-	}
+	String uiTitle = "uiTitle";
 
 	@ConfigItem(
 			keyName = "enableUI",
 			name = "Enable UI",
 			description = "Enable to turn on in game UI",
 			position = 140,
-			titleSection = "uiTitle"
+			section = "uiTitle"
 	)
 	default boolean enableUI()
 	{

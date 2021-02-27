@@ -23,7 +23,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package net.runelite.client.plugins.ElMessHall;
+package net.runelite.client.plugins.elmesshall;
 
 import com.google.inject.Provides;
 import java.time.Instant;
@@ -46,16 +46,13 @@ import net.runelite.client.events.ConfigChanged;
 import net.runelite.client.game.WorldService;
 import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginDescriptor;
-import net.runelite.client.plugins.PluginType;
 import net.runelite.client.ui.overlay.OverlayManager;
 import net.runelite.client.util.WorldUtil;
 import net.runelite.http.api.worlds.World;
 import net.runelite.http.api.worlds.WorldResult;
 import net.runelite.http.api.worlds.WorldType;
-import org.pf4j.Extension;
-import com.owain.chinbreakhandler.ChinBreakHandler;
+import net.runelite.client.plugins.elbreakhandler.ElBreakHandler;
 import java.awt.event.KeyEvent;
-import java.util.function.Function;
 
 import net.runelite.api.*;
 import net.runelite.api.coords.LocalPoint;
@@ -64,18 +61,19 @@ import net.runelite.api.events.*;
 import net.runelite.client.plugins.PluginDependency;
 import net.runelite.client.plugins.PluginManager;
 import net.runelite.client.callback.ClientThread;
-import net.runelite.client.plugins.botutils.BotUtils;
-import static net.runelite.client.plugins.ElMessHall.ElMessHallState.*;
+import net.runelite.client.plugins.elutils.ElUtils;
+import org.pf4j.Extension;
+
+import static net.runelite.client.plugins.elmesshall.ElMessHallState.*;
 
 
 @Extension
-@PluginDependency(BotUtils.class)
+@PluginDependency(ElUtils.class)
 @PluginDescriptor(
 	name = "El Mess Hall",
 	enabledByDefault = false,
 	description = "Does Mess Hall Minigame.",
-	tags = {"cook, food, cooking, el"},
-	type = PluginType.SKILLING
+	tags = {"cook, food, cooking, el"}
 )
 @Slf4j
 public class ElMessHallPlugin extends Plugin
@@ -87,7 +85,7 @@ public class ElMessHallPlugin extends Plugin
 	private ElMessHallConfiguration config;
 
 	@Inject
-	private BotUtils utils;
+	private ElUtils utils;
 
 	@Inject
 	private WorldService worldService;
@@ -105,7 +103,7 @@ public class ElMessHallPlugin extends Plugin
 	private ElMessHallOverlay overlay;
 
 	@Inject
-	private ChinBreakHandler chinBreakHandler;
+	private ElBreakHandler elBreakHandler;
 
 	@Inject
 	private ClientThread clientThread;
@@ -148,7 +146,7 @@ public class ElMessHallPlugin extends Plugin
 	@Override
 	protected void startUp()
 	{
-		chinBreakHandler.registerPlugin(this);
+		elBreakHandler.registerPlugin(this);
 		clientTickDelay=100;
 	}
 
@@ -156,13 +154,13 @@ public class ElMessHallPlugin extends Plugin
 	protected void shutDown()
 	{
 		resetVals();
-		chinBreakHandler.unregisterPlugin(this);
+		elBreakHandler.unregisterPlugin(this);
 	}
 
 	private void resetVals()
 	{
 		overlayManager.remove(overlay);
-		chinBreakHandler.stopPlugin(this);
+		elBreakHandler.stopPlugin(this);
 		state = null;
 		timeout = 0;
 		botTimer = null;
@@ -188,7 +186,7 @@ public class ElMessHallPlugin extends Plugin
 			if (!startMessHall)
 			{
 				startMessHall = true;
-				chinBreakHandler.startPlugin(this);
+				elBreakHandler.startPlugin(this);
 				state = null;
 				targetMenu = null;
 				botTimer = Instant.now();
@@ -255,7 +253,7 @@ public class ElMessHallPlugin extends Plugin
 		else if(player.getAnimation()!=-1){
 			return ANIMATING;
 		}
-		else if (chinBreakHandler.shouldBreak(this))
+		else if (elBreakHandler.shouldBreak(this))
 		{
 			return HANDLE_BREAK;
 		} else if(client.getWidget(149,0)==null || client.getWidget(149,0).isHidden()){
@@ -277,7 +275,7 @@ public class ElMessHallPlugin extends Plugin
 
 	@Subscribe
 	private void onClientTick(ClientTick tick) {
-		if (!startMessHall || chinBreakHandler.isBreakActive(this))
+		if (!startMessHall || elBreakHandler.isBreakActive(this))
 		{
 			return;
 		}
@@ -350,7 +348,7 @@ public class ElMessHallPlugin extends Plugin
 	@Subscribe
 	private void onGameTick(GameTick tick)
 	{
-		if (!startMessHall || chinBreakHandler.isBreakActive(this))
+		if (!startMessHall || elBreakHandler.isBreakActive(this))
 		{
 			return;
 		}
@@ -378,7 +376,7 @@ public class ElMessHallPlugin extends Plugin
 					break;
 				case HANDLE_BREAK:
 					firstTime=true;
-					chinBreakHandler.startBreak(this);
+					elBreakHandler.startBreak(this);
 					timeout = 10;
 					break;
 				//case ANIMATING:

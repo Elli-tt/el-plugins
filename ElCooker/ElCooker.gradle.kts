@@ -23,15 +23,15 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-version = "2.1.4"
+version = "3.0.0"
 
 project.extra["PluginName"] = "El Cooker" // This is the name that is used in the external plugin manager panel
 project.extra["PluginDescription"] = "Cooks raw food" // This is the description that is used in the external plugin manager panel
 
 
 dependencies {
-    compileOnly(group = "com.openosrs.externals", name = "botutils", version = "4.9.1+");
-    compileOnly(group = "com.owain.externals", name = "chinbreakhandler", version = "0.0.13+")
+    compileOnly(project(":elbreakhandler"))
+    compileOnly(project(":elutils"))
 }
 
 tasks {
@@ -42,10 +42,10 @@ tasks {
                     "Plugin-Id" to nameToId(project.extra["PluginName"] as String),
                     "Plugin-Provider" to project.extra["PluginProvider"],
                     "Plugin-Dependencies" to
-                            arrayOf(
-                                    "botutils-plugin",
-                                    "chinbreakhandler-plugin"
-                            ).joinToString(),
+                        arrayOf(
+                            nameToId("ElUtils"),
+                            "elbreakhandler-plugin"
+                        ).joinToString(),
                     "Plugin-Description" to project.extra["PluginDescription"],
                     "Plugin-License" to project.extra["PluginLicense"]
             ))

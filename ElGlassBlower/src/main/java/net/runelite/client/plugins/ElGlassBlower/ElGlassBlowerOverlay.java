@@ -1,4 +1,4 @@
-package net.runelite.client.plugins.ElGlassBlower;
+package net.runelite.client.plugins.elglassblower;
 
 import java.awt.Dimension;
 import java.awt.Graphics2D;
@@ -10,14 +10,14 @@ import javax.inject.Singleton;
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.Client;
 import net.runelite.api.Perspective;
-import static net.runelite.api.MenuOpcode.RUNELITE_OVERLAY_CONFIG;
+import static net.runelite.api.MenuAction.RUNELITE_OVERLAY_CONFIG;
 import net.runelite.api.coords.LocalPoint;
 import static net.runelite.client.ui.overlay.OverlayManager.OPTION_CONFIGURE;
 
 import net.runelite.client.ui.overlay.*;
 import net.runelite.client.ui.overlay.components.TitleComponent;
-import net.runelite.client.ui.overlay.components.table.TableAlignment;
-import net.runelite.client.ui.overlay.components.table.TableComponent;
+import com.openosrs.client.ui.overlay.components.table.TableAlignment;
+import com.openosrs.client.ui.overlay.components.table.TableComponent;
 import net.runelite.client.util.ColorUtil;
 import static org.apache.commons.lang3.time.DurationFormatUtils.formatDuration;
 

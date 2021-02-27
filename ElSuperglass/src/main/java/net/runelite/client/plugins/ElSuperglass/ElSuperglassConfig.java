@@ -22,7 +22,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package net.runelite.client.plugins.ElSuperglass;
+package net.runelite.client.plugins.elsuperglass;
 
 import net.runelite.client.config.Button;
 import net.runelite.client.config.Config;
@@ -38,7 +38,7 @@ public interface ElSuperglassConfig extends Config
 			name = "",
 			description = "Instructions. Don't enter anything into this field",
 			position = 0,
-			titleSection = "instructionsTitle"
+			section = "instructionsTitle"
 	)
 	default String instructions1()
 	{

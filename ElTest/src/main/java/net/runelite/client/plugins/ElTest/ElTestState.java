@@ -1,4 +1,4 @@
-package net.runelite.client.plugins.ElTest;
+package net.runelite.client.plugins.eltest;
 
 public enum ElTestState
 {

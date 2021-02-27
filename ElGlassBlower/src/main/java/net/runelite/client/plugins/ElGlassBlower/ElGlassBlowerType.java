@@ -1,4 +1,4 @@
-package net.runelite.client.plugins.ElGlassBlower;
+package net.runelite.client.plugins.elglassblower;
 
 public enum ElGlassBlowerType
 {

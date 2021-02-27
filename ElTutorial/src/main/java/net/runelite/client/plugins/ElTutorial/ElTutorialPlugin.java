@@ -1,4 +1,4 @@
-package net.runelite.client.plugins.ElTutorial;
+package net.runelite.client.plugins.eltutorial;
 
 import com.google.inject.Provides;
 import javax.inject.Inject;
@@ -16,21 +16,21 @@ import net.runelite.client.game.ItemManager;
 import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginDependency;
 import net.runelite.client.plugins.PluginDescriptor;
-import net.runelite.client.plugins.PluginType;
 import net.runelite.client.ui.overlay.OverlayManager;
 import org.pf4j.Extension;
-import net.runelite.client.plugins.botutils.BotUtils;
+import net.runelite.client.plugins.elutils.ElUtils;
+import net.runelite.client.plugins.elbreakhandler.ElBreakHandler;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.time.Instant;
-import static net.runelite.client.plugins.ElTutorial.ElTutorialState.*;
+import static net.runelite.client.plugins.eltutorial.ElTutorialState.*;
 
 @Extension
-@PluginDependency(BotUtils.class)
+@PluginDependency(ElUtils.class)
 @PluginDescriptor(
 		name = "El Tutorial",
 		description = "Completes tutorial",
-		type = PluginType.SKILLING
+		tags = {"el, tutorial"}
 )
 @Slf4j
 public class ElTutorialPlugin extends Plugin
@@ -39,7 +39,7 @@ public class ElTutorialPlugin extends Plugin
 	private Client client;
 
 	@Inject
-	private BotUtils utils;
+	private ElUtils utils;
 
 	@Inject
 	private ConfigManager configManager;
@@ -203,10 +203,10 @@ public class ElTutorialPlugin extends Plugin
 	@Subscribe
 	private void onMenuOptionClicked(MenuOptionClicked event)
 	{
-		log.debug(event.toString());
+		log.info("Event:" + event.toString());
 		if(targetMenu!=null){
-			event.consume();
-			client.invokeMenuAction(targetMenu.getOption(),targetMenu.getTarget(),targetMenu.getIdentifier(),targetMenu.getOpcode(),targetMenu.getParam0(),targetMenu.getParam1());
+			//event.consume();
+			menuAction(event,targetMenu.getOption(),targetMenu.getTarget(),targetMenu.getIdentifier(),targetMenu.getMenuAction(),targetMenu.getParam0(),targetMenu.getParam1());
 			targetMenu=null;
 		}
 	}
@@ -289,7 +289,6 @@ public class ElTutorialPlugin extends Plugin
 							client.setVar(VarClientInt.INPUT_TYPE, 15);
 							client.setVar(VarClientStr.INPUT_TEXT, String.valueOf("zezima"));
 							client.runScript(681);
-							client.runScript(ScriptID.MESSAGE_LAYER_CLOSE);
 							break;
 						} else if(client.getWidget(558,14)!=null && !client.getWidget(558,14).isHidden()){
 							selectName();
@@ -1062,7 +1061,7 @@ public class ElTutorialPlugin extends Plugin
 
 	private void selectName()
 	{
-		targetMenu = new MenuEntry("","",1,57,-1,36569102,false);
+		targetMenu = new MenuEntry("","",1,57,-1,36569104,false);
 		utils.delayMouseClick(getRandomNullPoint(), sleepDelay());
 	}
 
@@ -1108,5 +1107,16 @@ public class ElTutorialPlugin extends Plugin
 		);
 
 		client.getCanvas().dispatchEvent(e);
+	}
+
+	public void menuAction(MenuOptionClicked menuOptionClicked, String option, String target, int identifier, MenuAction menuAction, int param0, int param1)
+	{
+		menuOptionClicked.setMenuOption(option);
+		menuOptionClicked.setMenuTarget(target);
+		menuOptionClicked.setId(identifier);
+		menuOptionClicked.setMenuAction(menuAction);
+		menuOptionClicked.setActionParam(param0);
+		menuOptionClicked.setWidgetId(param1);
+		log.info(menuOptionClicked.toString());
 	}
 }

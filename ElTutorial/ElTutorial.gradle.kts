@@ -23,13 +23,14 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-version = "2.0.7"
+version = "3.0.0"
 
 project.extra["PluginName"] = "El Tutorial" // This is the name that is used in the external plugin manager panel
 project.extra["PluginDescription"] = "Completes tutorial island for you" // This is the description that is used in the external plugin manager panel
 
 dependencies {
-    compileOnly(group = "com.openosrs.externals", name = "botutils", version = "4.9.1+");
+    compileOnly(project(":elbreakhandler"))
+    compileOnly(project(":elutils"))
 }
 
 tasks {
@@ -41,7 +42,8 @@ tasks {
                     "Plugin-Provider" to project.extra["PluginProvider"],
                     "Plugin-Dependencies" to
                             arrayOf(
-                                    "botutils-plugin"
+                            nameToId("ElUtils"),
+                            "elbreakhandler-plugin"
                             ).joinToString(),
                     "Plugin-Description" to project.extra["PluginDescription"],
                     "Plugin-License" to project.extra["PluginLicense"]

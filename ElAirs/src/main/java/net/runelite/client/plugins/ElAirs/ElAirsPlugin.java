@@ -23,13 +23,12 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package net.runelite.client.plugins.ElAirs;
+package net.runelite.client.plugins.elairs;
 
 import com.google.inject.Provides;
-import com.owain.chinbreakhandler.ChinBreakHandler;
+import net.runelite.client.plugins.elbreakhandler.ElBreakHandler;
 import java.awt.Rectangle;
 import java.time.Instant;
-import java.util.*;
 import javax.inject.Inject;
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.*;
@@ -44,23 +43,21 @@ import net.runelite.client.events.ConfigChanged;
 import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginDependency;
 import net.runelite.client.plugins.PluginDescriptor;
-import net.runelite.client.plugins.PluginManager;
-import net.runelite.client.plugins.PluginType;
-import net.runelite.client.plugins.botutils.BotUtils;
+import net.runelite.client.plugins.elutils.ElUtils;
 import net.runelite.client.ui.overlay.OverlayManager;
 import org.pf4j.Extension;
-import static net.runelite.client.plugins.ElAirs.ElAirsState.*;
-import static net.runelite.client.plugins.ElAirs.ElAirsType.*;
+
+import static net.runelite.client.plugins.elairs.ElAirsState.*;
+import static net.runelite.client.plugins.elairs.ElAirsType.*;
 
 
 @Extension
-@PluginDependency(BotUtils.class)
+@PluginDependency(ElUtils.class)
 @PluginDescriptor(
 	name = "El Airs",
 	enabledByDefault = false,
 	description = "Crafts at the air altar.",
-	tags = {"rune, craft, runecraft, air, el"},
-	type = PluginType.SKILLING
+	tags = {"rune, craft, runecraft, air, el"}
 )
 @Slf4j
 public class ElAirsPlugin extends Plugin
@@ -72,13 +69,10 @@ public class ElAirsPlugin extends Plugin
 	private ElAirsConfiguration config;
 
 	@Inject
-	private BotUtils utils;
+	private ElUtils utils;
 
 	@Inject
 	private ConfigManager configManager;
-
-	@Inject
-	PluginManager pluginManager;
 
 	@Inject
 	OverlayManager overlayManager;
@@ -87,7 +81,7 @@ public class ElAirsPlugin extends Plugin
 	private ElAirsOverlay overlay;
 
 	@Inject
-	private ChinBreakHandler chinBreakHandler;
+	private ElBreakHandler elBreakHandler;
 
 
 	ElAirsState state;
@@ -126,20 +120,20 @@ public class ElAirsPlugin extends Plugin
 	protected void startUp()
 	{
 		resetVals();
-		chinBreakHandler.registerPlugin(this);
+		elBreakHandler.registerPlugin(this);
 	}
 
 	@Override
 	protected void shutDown()
 	{
 		resetVals();
-		chinBreakHandler.unregisterPlugin(this);
+		elBreakHandler.unregisterPlugin(this);
 	}
 
 	private void resetVals()
 	{
 		overlayManager.remove(overlay);
-		chinBreakHandler.stopPlugin(this);
+		elBreakHandler.stopPlugin(this);
 		state = null;
 		timeout = 0;
 		botTimer = null;
@@ -164,7 +158,7 @@ public class ElAirsPlugin extends Plugin
 			if (!startTeaks)
 			{
 				startTeaks = true;
-				chinBreakHandler.startPlugin(this);
+				elBreakHandler.startPlugin(this);
 				state = null;
 				targetMenu = null;
 				botTimer = Instant.now();
@@ -249,7 +243,7 @@ public class ElAirsPlugin extends Plugin
 			timeout = 2 + tickDelay();
 			return MOVING;
 		}
-		else if (chinBreakHandler.shouldBreak(this) && player.getWorldArea().intersectsWith(FALADOR_EAST_BANK))
+		else if (elBreakHandler.shouldBreak(this) && player.getWorldArea().intersectsWith(FALADOR_EAST_BANK))
 		{
 			return HANDLE_BREAK;
 		}
@@ -267,7 +261,7 @@ public class ElAirsPlugin extends Plugin
 	@Subscribe
 	private void onGameTick(GameTick tick)
 	{
-		if (!startTeaks || chinBreakHandler.isBreakActive(this))
+		if (!startTeaks || elBreakHandler.isBreakActive(this))
 		{
 			return;
 		}
@@ -290,7 +284,7 @@ public class ElAirsPlugin extends Plugin
 					timeout--;
 					break;
 				case HANDLE_BREAK:
-					chinBreakHandler.startBreak(this);
+					elBreakHandler.startBreak(this);
 					timeout = 10;
 					break;
 				case ANIMATING:
@@ -508,7 +502,7 @@ public class ElAirsPlugin extends Plugin
 			utils.withdrawItemAmount(ID,14);
 			timeout+=3;
 		} else {
-			targetMenu = new MenuEntry("", "", (client.getVarbitValue(6590) == 3) ? 1 : 5, MenuOpcode.CC_OP.getId(), utils.getBankItemWidget(ID).getIndex(), 786444, false);
+			targetMenu = new MenuEntry("", "", (client.getVarbitValue(6590) == 3) ? 1 : 5, MenuAction.CC_OP.getId(), utils.getBankItemWidget(ID).getIndex(), 786444, false);
 			//utils.setMenuEntry(targetMenu);
 			clickBounds = utils.getBankItemWidget(ID).getBounds()!=null ? utils.getBankItemWidget(ID).getBounds() : new Rectangle(client.getCenterX() - 50, client.getCenterY() - 50, 100, 100);
 			utils.delayMouseClick(clickBounds,sleepDelay());

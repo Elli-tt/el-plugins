@@ -1,4 +1,4 @@
-package net.runelite.client.plugins.ElFiremaker;
+package net.runelite.client.plugins.elfiremaker;
 
 public enum ElFiremakerState
 {

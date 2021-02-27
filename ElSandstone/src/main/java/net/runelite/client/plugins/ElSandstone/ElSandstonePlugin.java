@@ -23,10 +23,10 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package net.runelite.client.plugins.ElSandstone;
+package net.runelite.client.plugins.elsandstone;
 
 import com.google.inject.Provides;
-import com.owain.chinbreakhandler.ChinBreakHandler;
+import net.runelite.client.plugins.elbreakhandler.ElBreakHandler;
 import java.time.Instant;
 import javax.inject.Inject;
 import lombok.extern.slf4j.Slf4j;
@@ -44,22 +44,19 @@ import net.runelite.client.eventbus.Subscribe;
 import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginDependency;
 import net.runelite.client.plugins.PluginDescriptor;
-import net.runelite.client.plugins.PluginManager;
-import net.runelite.client.plugins.PluginType;
-import net.runelite.client.plugins.botutils.BotUtils;
+import net.runelite.client.plugins.elutils.ElUtils;
 import net.runelite.client.ui.overlay.OverlayManager;
 import org.pf4j.Extension;
-import static net.runelite.client.plugins.ElSandstone.ElSandstoneState.*;
 
+import static net.runelite.client.plugins.elsandstone.ElSandstoneState.*;
 
 @Extension
-@PluginDependency(BotUtils.class)
+@PluginDependency(ElUtils.class)
 @PluginDescriptor(
 	name = "El Sandstone",
 	enabledByDefault = false,
 	description = "Mines sandstone for you.",
-	tags = {"mining, bot, power, skill"},
-	type = PluginType.SKILLING
+	tags = {"mining, bot, power, skill"}
 )
 @Slf4j
 public class ElSandstonePlugin extends Plugin
@@ -71,13 +68,10 @@ public class ElSandstonePlugin extends Plugin
 	private ElSandstoneConfiguration config;
 
 	@Inject
-	private BotUtils utils;
+	private ElUtils utils;
 
 	@Inject
 	private ConfigManager configManager;
-
-	@Inject
-	PluginManager pluginManager;
 
 	@Inject
 	OverlayManager overlayManager;
@@ -86,7 +80,7 @@ public class ElSandstonePlugin extends Plugin
 	private ElSandstoneOverlay overlay;
 
 	@Inject
-	private ChinBreakHandler chinBreakHandler;
+	private ElBreakHandler elBreakHandler;
 
 	ElSandstoneState state;
 	GameObject targetObject;
@@ -115,20 +109,20 @@ public class ElSandstonePlugin extends Plugin
 	@Override
 	protected void startUp()
 	{
-		chinBreakHandler.registerPlugin(this);
+		elBreakHandler.registerPlugin(this);
 	}
 
 	@Override
 	protected void shutDown()
 	{
 		resetVals();
-		chinBreakHandler.unregisterPlugin(this);
+		elBreakHandler.unregisterPlugin(this);
 	}
 
 	private void resetVals()
 	{
 		overlayManager.remove(overlay);
-		chinBreakHandler.stopPlugin(this);
+		elBreakHandler.stopPlugin(this);
 		state = null;
 		timeout = 0;
 		botTimer = null;
@@ -149,7 +143,7 @@ public class ElSandstonePlugin extends Plugin
 			if (!startSandstoneMiner)
 			{
 				startSandstoneMiner = true;
-				chinBreakHandler.startPlugin(this);
+				elBreakHandler.startPlugin(this);
 				state = null;
 				targetMenu = null;
 				botTimer = Instant.now();
@@ -234,7 +228,7 @@ public class ElSandstonePlugin extends Plugin
 		} else if (player.getWorldLocation().equals(new WorldPoint(3152,2910,0))) {
 			return WALKING_BACK_TO_SANDSTONE;
 		}
-		if (chinBreakHandler.shouldBreak(this))
+		if (elBreakHandler.shouldBreak(this))
 		{
 			return HANDLE_BREAK;
 		}
@@ -249,7 +243,7 @@ public class ElSandstonePlugin extends Plugin
 	@Subscribe
 	private void onGameTick(GameTick tick)
 	{
-		if (!startSandstoneMiner || chinBreakHandler.isBreakActive(this))
+		if (!startSandstoneMiner || elBreakHandler.isBreakActive(this))
 		{
 			return;
 		}
@@ -287,7 +281,7 @@ public class ElSandstonePlugin extends Plugin
 					timeout = tickDelay();
 					break;
 				case HANDLE_BREAK:
-					chinBreakHandler.startBreak(this);
+					elBreakHandler.startBreak(this);
 					timeout = 10;
 					break;
 				case ANIMATING:
@@ -332,7 +326,7 @@ public class ElSandstonePlugin extends Plugin
 		}
 		if (targetObject != null)
 		{
-			targetMenu = new MenuEntry("", "", targetObject.getId(), MenuOpcode.GAME_OBJECT_FIRST_OPTION.getId(),
+			targetMenu = new MenuEntry("", "", targetObject.getId(), MenuAction.GAME_OBJECT_FIRST_OPTION.getId(),
 					targetObject.getSceneMinLocation().getX(), targetObject.getSceneMinLocation().getY(), false);
 			utils.setMenuEntry(targetMenu);
 			utils.delayMouseClick(targetObject.getConvexHull().getBounds(), sleepDelay());
@@ -360,7 +354,7 @@ public class ElSandstonePlugin extends Plugin
 		targetObject = utils.getGameObjects(grinderId).get(0);
 		if (targetObject != null)
 		{
-			targetMenu = new MenuEntry("", "", targetObject.getId(), MenuOpcode.GAME_OBJECT_FIRST_OPTION.getId(),
+			targetMenu = new MenuEntry("", "", targetObject.getId(), MenuAction.GAME_OBJECT_FIRST_OPTION.getId(),
 					targetObject.getSceneMinLocation().getX(), targetObject.getSceneMinLocation().getY(), false);
 			utils.setMenuEntry(targetMenu);
 			utils.delayMouseClick(targetObject.getConvexHull().getBounds(), sleepDelay());

@@ -23,16 +23,14 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package net.runelite.client.plugins.ElCooker;
+package net.runelite.client.plugins.elcooker;
 
 import net.runelite.client.config.Button;
 import net.runelite.client.config.Config;
 import net.runelite.client.config.ConfigGroup;
 import net.runelite.client.config.ConfigItem;
 import net.runelite.client.config.ConfigSection;
-import net.runelite.client.config.ConfigTitleSection;
 import net.runelite.client.config.Range;
-import net.runelite.client.config.Title;
 
 @ConfigGroup("ElCooker")
 public interface ElCookerConfiguration extends Config
@@ -44,10 +42,7 @@ public interface ElCookerConfiguration extends Config
 		description = "Configure how the bot handles sleep delays",
 		position = 2
 	)
-	default boolean delayConfig()
-	{
-		return false;
-	}
+	String delayConfig = "delayConfig";
 
 	@Range(
 		min = 0,
@@ -131,10 +126,7 @@ public interface ElCookerConfiguration extends Config
 		description = "Configure how the bot handles game tick delays, 1 game tick equates to roughly 600ms",
 		position = 8
 	)
-	default boolean delayTickConfig()
-	{
-		return false;
-	}
+	String delayTickConfig = "delayTickConfig";
 
 	@Range(
 		min = 0,
@@ -212,17 +204,13 @@ public interface ElCookerConfiguration extends Config
 		return false;
 	}
 
-	@ConfigTitleSection(
+	@ConfigSection(
 			keyName = "cookerfisherTitle",
 			name = "Cooker Configuration",
 			description = "",
 			position = 20
 	)
-	default Title cookerTitle()
-	{
-		return new Title();
-	}
-
+	String cookerfisherTitle = "cookerfisherTitle";
 	@ConfigItem(
 		keyName = "instructions",
 		name = "",
@@ -338,7 +326,7 @@ public interface ElCookerConfiguration extends Config
 		name = "Enable UI",
 		description = "Enable to turn on in game UI",
 		position = 140,
-		titleSection = "cookerTitle"
+		section = "cookerTitle"
 	)
 	default boolean enableUI()
 	{

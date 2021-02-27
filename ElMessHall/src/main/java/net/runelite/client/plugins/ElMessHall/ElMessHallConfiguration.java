@@ -23,16 +23,14 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package net.runelite.client.plugins.ElMessHall;
+package net.runelite.client.plugins.elmesshall;
 
 import net.runelite.client.config.Button;
 import net.runelite.client.config.Config;
 import net.runelite.client.config.ConfigGroup;
 import net.runelite.client.config.ConfigItem;
 import net.runelite.client.config.ConfigSection;
-import net.runelite.client.config.ConfigTitleSection;
 import net.runelite.client.config.Range;
-import net.runelite.client.config.Title;
 
 @ConfigGroup("ElMessHall")
 public interface ElMessHallConfiguration extends Config
@@ -44,10 +42,7 @@ public interface ElMessHallConfiguration extends Config
 		description = "Configure how the bot handles sleep delays",
 		position = 2
 	)
-	default boolean delayConfig()
-	{
-		return false;
-	}
+	String delayConfig = "delayConfig";
 
 	@Range(
 		min = 0,
@@ -131,10 +126,7 @@ public interface ElMessHallConfiguration extends Config
 		description = "Configure how the bot handles game tick delays, 1 game tick equates to roughly 600ms",
 		position = 8
 	)
-	default boolean delayTickConfig()
-	{
-		return false;
-	}
+	String delayTickConfig = "delayTickConfig";
 
 	@Range(
 		min = 0,
@@ -212,16 +204,13 @@ public interface ElMessHallConfiguration extends Config
 		return false;
 	}
 
-	@ConfigTitleSection(
+	@ConfigSection(
 			keyName = "tickcookerTitle",
 			name = "Tick Cooker Configuration",
 			description = "",
 			position = 20
 	)
-	default Title cookerTitle()
-	{
-		return new Title();
-	}
+	String tickcookerTitle = "tickcookerTitle";
 
 	@ConfigItem(
 		keyName = "instructions",
@@ -239,7 +228,7 @@ public interface ElMessHallConfiguration extends Config
 			name = "Type",
 			description = "Select which item you would like to make.",
 			position = 1,
-			titleSection = "generalTitle"
+			section = "generalTitle"
 	)
 	default ElMessHallType type()
 	{
@@ -251,7 +240,7 @@ public interface ElMessHallConfiguration extends Config
 		name = "Enable UI",
 		description = "Enable to turn on in game UI",
 		position = 140,
-		titleSection = "tickcookerTitle"
+		section = "tickcookerTitle"
 	)
 	default boolean enableUI()
 	{

@@ -1,4 +1,4 @@
-package net.runelite.client.plugins.ElMessHall;
+package net.runelite.client.plugins.elmesshall;
 
 public enum ElMessHallType
 {

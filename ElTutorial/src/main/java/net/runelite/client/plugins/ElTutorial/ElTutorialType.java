@@ -1,4 +1,4 @@
-package net.runelite.client.plugins.ElTutorial;
+package net.runelite.client.plugins.eltutorial;
 
 public enum ElTutorialType
 {

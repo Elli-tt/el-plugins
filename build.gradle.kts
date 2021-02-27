@@ -1,5 +1,3 @@
-//this works
-
 import ProjectVersions.openosrsVersion
 
 buildscript {
@@ -9,11 +7,11 @@ buildscript {
 }
 
 plugins {
-    java //this enables annotationProcessor and implementation in dependencies
+	java
     checkstyle
 }
 
-project.extra["GithubUrl"] = "https://github.com/elli-tt/el-plugins"
+project.extra["GithubUrl"] = "https://github.com/Elli-tt/El-Externals"
 
 apply<BootstrapPlugin>()
 
@@ -35,8 +33,8 @@ allprojects {
 subprojects {
     group = "com.openosrs.externals"
 
-    project.extra["PluginProvider"] = "elli-tt"
-    project.extra["ProjectSupportUrl"] = "http://discord.gg/enDUcqH"
+    project.extra["PluginProvider"] = "El"
+    project.extra["ProjectSupportUrl"] = "https://discord.gg/enDUcqH"
     project.extra["PluginLicense"] = "3-Clause BSD License"
 
     repositories {
@@ -52,27 +50,27 @@ subprojects {
             }
             filter {
                 includeGroupByRegex("com\\.openosrs.*")
-                includeGroupByRegex("com\\.owain.*")
             }
         }
     }
 
     apply<JavaPlugin>()
-
-    dependencies {
+	
+	dependencies {
         annotationProcessor(group = "org.projectlombok", name = "lombok", version = "1.18.12")
-        annotationProcessor(group = "org.pf4j", name = "pf4j", version = "3.2.0")
+        annotationProcessor(group = "org.pf4j", name = "pf4j", version = "3.4.1")
         implementation(group = "ch.qos.logback", name = "logback-classic", version = "1.2.3")
         implementation(group = "com.google.code.gson", name = "gson", version = "2.8.6")
-        implementation(group = "com.google.guava", name = "guava", version = "28.2-jre")
+        implementation(group = "com.google.guava", name = "guava", version = "29.0-jre")
         implementation(group = "com.google.inject", name = "guice", version = "4.2.3", classifier = "no_aop")
-        implementation(group = "com.squareup.okhttp3", name = "okhttp", version = "4.5.0")
-        implementation(group = "io.reactivex.rxjava3", name = "rxjava", version = "3.0.2")
+        implementation(group = "com.squareup.okhttp3", name = "okhttp", version = "4.9.0")
         implementation(group = "net.sf.jopt-simple", name = "jopt-simple", version = "5.0.4")
-        implementation(group = "org.apache.commons", name = "commons-text", version = "1.8")
-        implementation(group = "org.pf4j", name = "pf4j", version = "3.2.0")
+        implementation(group = "org.apache.commons", name = "commons-text", version = "1.9")
+        implementation(group = "org.pf4j", name = "pf4j", version = "3.4.1")
         implementation(group = "org.projectlombok", name = "lombok", version = "1.18.12")
         implementation(group = "org.pushing-pixels", name = "radiance-substance", version = "2.5.1")
+
+        compileOnly(group = "io.reactivex.rxjava3", name = "rxjava", version = "3.0.10")
 
         compileOnly("com.openosrs:runelite-api:$openosrsVersion+")
         compileOnly("com.openosrs.rs:runescape-api:$openosrsVersion+")
@@ -84,13 +82,13 @@ subprojects {
         compileOnly(Libraries.lombok)
         compileOnly(Libraries.pf4j)
     }
-
+	
     configure<JavaPluginConvention> {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
-
-    configure<PublishingExtension> {
+	
+	configure<PublishingExtension> {
         repositories {
             maven {
                 url = uri("$buildDir/repo")
@@ -107,17 +105,17 @@ subprojects {
         withType<JavaCompile> {
             options.encoding = "UTF-8"
         }
-
-        register<Copy>("copyDeps") {
+		
+		register<Copy>("copyDeps") {
             into("./build/deps/")
             from(configurations["runtimeClasspath"])
         }
-
-        withType<Jar> {
+		
+		withType<Jar> {
             doLast {
                 copy {
                     from("./build/libs/")
-                    into(System.getProperty("user.home") + "/.runelite/externalmanager")
+                    into(System.getProperty("user.home") + "/.openosrs/plugins")
                 }
             }
         }

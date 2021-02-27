@@ -1,4 +1,4 @@
-package net.runelite.client.plugins.ElSuperglass;
+package net.runelite.client.plugins.elsuperglass;
 
 import com.google.inject.Provides;
 import javax.inject.Inject;
@@ -17,23 +17,23 @@ import net.runelite.client.events.ConfigChanged;
 import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginDependency;
 import net.runelite.client.plugins.PluginDescriptor;
-import net.runelite.client.plugins.PluginType;
 import net.runelite.client.ui.overlay.OverlayManager;
+import net.runelite.client.plugins.elutils.ElUtils;
+import net.runelite.client.plugins.elbreakhandler.ElBreakHandler;
 import org.pf4j.Extension;
-import net.runelite.client.plugins.botutils.BotUtils;
+
 import java.awt.*;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 
-import static net.runelite.client.plugins.botutils.Banks.BANK_SET;
+import static net.runelite.client.plugins.elutils.Banks.BANK_SET;
 
 @Extension
-@PluginDependency(BotUtils.class)
+@PluginDependency(ElUtils.class)
 @PluginDescriptor(
 	name = "El Superglass",
-	description = "Makes superglass.",
-	type = PluginType.SKILLING
+	description = "Makes superglass."
 )
 @Slf4j
 public class ElSuperglassPlugin extends Plugin
@@ -46,7 +46,7 @@ public class ElSuperglassPlugin extends Plugin
 	private Client client;
 
 	@Inject
-	private BotUtils utils;
+	private ElUtils utils;
 
 	@Inject
 	OverlayManager overlayManager;

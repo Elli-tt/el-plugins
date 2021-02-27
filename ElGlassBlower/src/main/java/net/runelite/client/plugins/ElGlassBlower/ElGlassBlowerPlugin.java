@@ -1,4 +1,4 @@
-package net.runelite.client.plugins.ElGlassBlower;
+package net.runelite.client.plugins.elglassblower;
 
 import com.google.inject.Provides;
 import javax.inject.Inject;
@@ -20,24 +20,24 @@ import net.runelite.client.game.ItemManager;
 import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginDependency;
 import net.runelite.client.plugins.PluginDescriptor;
-import net.runelite.client.plugins.PluginType;
 import net.runelite.client.ui.overlay.OverlayManager;
+import net.runelite.client.plugins.elutils.ElUtils;
+import net.runelite.client.plugins.elbreakhandler.ElBreakHandler;
 import org.pf4j.Extension;
-import net.runelite.client.plugins.botutils.BotUtils;
+
 import java.awt.event.KeyEvent;
 import java.time.Instant;
 import java.util.*;
 import java.util.List;
 import java.awt.Rectangle;
 
-import static net.runelite.client.plugins.botutils.Banks.BANK_SET;
+import static net.runelite.client.plugins.elutils.Banks.BANK_SET;
 
 @Extension
-@PluginDependency(BotUtils.class)
+@PluginDependency(ElUtils.class)
 @PluginDescriptor(
 	name = "El Glass Blower",
-	description = "Blows your glass",
-	type = PluginType.SKILLING
+	description = "Blows your glass"
 )
 @Slf4j
 public class ElGlassBlowerPlugin extends Plugin
@@ -50,7 +50,7 @@ public class ElGlassBlowerPlugin extends Plugin
 	private Client client;
 
 	@Inject
-	private BotUtils utils;
+	private ElUtils utils;
 
 	@Inject
 	OverlayManager overlayManager;
@@ -208,7 +208,7 @@ public class ElGlassBlowerPlugin extends Plugin
 			return;
 		}
 
-		objectToBlowName=itemManager.getItemDefinition(objectToBlowId).getName();
+		objectToBlowName=itemManager.getItemComposition(objectToBlowId).getName();
 		status = getStatus();
 		if(!status.equals("TICK_TIMER")){
 			outputStatus=status;

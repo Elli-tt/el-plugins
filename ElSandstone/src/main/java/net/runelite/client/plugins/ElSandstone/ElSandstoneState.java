@@ -1,4 +1,4 @@
-package net.runelite.client.plugins.ElSandstone;
+package net.runelite.client.plugins.elsandstone;
 
 public enum ElSandstoneState
 {

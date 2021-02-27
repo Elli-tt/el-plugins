@@ -1,4 +1,4 @@
-package net.runelite.client.plugins.ElCooker;
+package net.runelite.client.plugins.elcooker;
 
 public enum ElCookerState
 {

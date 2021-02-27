@@ -23,16 +23,14 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package net.runelite.client.plugins.ElAirs;
+package net.runelite.client.plugins.elairs;
 
 import net.runelite.client.config.Button;
 import net.runelite.client.config.Config;
 import net.runelite.client.config.ConfigGroup;
 import net.runelite.client.config.ConfigItem;
 import net.runelite.client.config.ConfigSection;
-import net.runelite.client.config.ConfigTitleSection;
 import net.runelite.client.config.Range;
-import net.runelite.client.config.Title;
 
 @ConfigGroup("ElAirs")
 public interface ElAirsConfiguration extends Config
@@ -44,10 +42,7 @@ public interface ElAirsConfiguration extends Config
 		description = "Configure how the bot handles sleep delays",
 		position = 2
 	)
-	default boolean delayConfig()
-	{
-		return false;
-	}
+	String delayConfig = "delayConfig";
 
 	@Range(
 		min = 0,
@@ -131,10 +126,7 @@ public interface ElAirsConfiguration extends Config
 		description = "Configure how the bot handles game tick delays, 1 game tick equates to roughly 600ms",
 		position = 8
 	)
-	default boolean delayTickConfig()
-	{
-		return false;
-	}
+	String delayTickConfig = "delayTickConfig";
 
 	@Range(
 		min = 0,
@@ -212,46 +204,40 @@ public interface ElAirsConfiguration extends Config
 		return false;
 	}
 
-	@ConfigTitleSection(
+	@ConfigSection(
 		keyName = "instructionsTitle",
 		name = "Instructions",
 		description = "",
 		position = 16
 	)
-	default Title instructionsTitle()
-	{
-		return new Title();
-	}
+	String instructionsTitle = "instructionsTitle";
 
 	@ConfigItem(
 		keyName = "instructions",
 		name = "",
 		description = "Instructions. Don't enter anything into this field",
 		position = 20,
-		titleSection = "instructionsTitle"
+		section = "instructionsTitle"
 	)
 	default String instructions()
 	{
 		return "Crafts at the air altar. ";
 	}
 
-	@ConfigTitleSection(
+	@ConfigSection(
 		keyName = "elAirsTitle",
 		name = "Airs Configuration",
 		description = "",
 		position = 60
 	)
-	default Title elAirsTitle()
-	{
-		return new Title();
-	}
+	String elAirsTitle = "elAirsTitle";
 
 	@ConfigItem(
 			keyName = "mode",
 			name = "Select Mode",
 			description = "Select which mode you would like to run.",
 			position = 138,
-			titleSection = "elAirsTitle"
+			section = "elAirsTitle"
 	)
 	default ElAirsType mode()
 	{
@@ -263,7 +249,7 @@ public interface ElAirsConfiguration extends Config
 			name = "Use Rune Essence",
 			description = "Enable to use rune essence.",
 			position = 139,
-			titleSection = "elAirsTitle"
+			section = "elAirsTitle"
 	)
 	default boolean useRuneEssence()
 	{
@@ -275,7 +261,7 @@ public interface ElAirsConfiguration extends Config
 			name = "Use Staminas",
 			description = "Tick this if you want to use stamina potions.",
 			position = 140,
-			titleSection = "elAirsTitle"
+			section = "elAirsTitle"
 	)
 	default boolean useStams() { return false; }
 
@@ -286,7 +272,7 @@ public interface ElAirsConfiguration extends Config
 			position = 141,
 			hidden = true,
 			unhide = "useStams",
-			titleSection = "elAirsTitle"
+			section = "elAirsTitle"
 	)
 	default int minEnergy() { return 50; }
 
@@ -297,7 +283,7 @@ public interface ElAirsConfiguration extends Config
 			position = 142,
 			hidden = true,
 			unhide = "useStams",
-			titleSection = "elAirsTitle"
+			section = "elAirsTitle"
 	)
 	default int minEnergyStam() { return 25; }
 
@@ -306,7 +292,7 @@ public interface ElAirsConfiguration extends Config
 		name = "Enable UI",
 		description = "Enable to turn on in game UI",
 		position = 140,
-		titleSection = "elAirsTitle"
+		section = "elAirsTitle"
 	)
 	default boolean enableUI()
 	{

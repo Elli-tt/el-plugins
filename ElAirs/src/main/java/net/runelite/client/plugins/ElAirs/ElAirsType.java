@@ -1,4 +1,4 @@
-package net.runelite.client.plugins.ElAirs;
+package net.runelite.client.plugins.elairs;
 
 public enum ElAirsType
 {
