@@ -26,7 +26,6 @@
 package net.runelite.client.plugins.elkarambwansfree;
 
 import com.google.inject.Provides;
-import net.runelite.client.plugins.elbreakhandler.ElBreakHandler;
 import java.awt.Rectangle;
 import java.time.Instant;
 import java.util.*;
@@ -45,6 +44,7 @@ import net.runelite.client.plugins.PluginDependency;
 import net.runelite.client.plugins.PluginDescriptor;
 import net.runelite.client.plugins.PluginManager;
 import net.runelite.client.plugins.elutils.ElUtils;
+import net.runelite.client.plugins.elbreakhandler.ElBreakHandler;
 import net.runelite.client.ui.overlay.OverlayManager;
 import org.pf4j.Extension;
 

@@ -573,14 +573,23 @@ public class ElMessHallPlugin extends Plugin
 
 
 	@Subscribe
-	private void onMenuOptionClicked(MenuOptionClicked event){
-
-		log.debug(event.toString());
+	private void onMenuOptionClicked(MenuOptionClicked event)
+	{
 		if(targetMenu!=null){
-			event.consume();
-			client.invokeMenuAction(targetMenu.getOption(),targetMenu.getTarget(),targetMenu.getIdentifier(),targetMenu.getOpcode(),targetMenu.getParam0(),targetMenu.getParam1());
-			targetMenu=null;
+			menuAction(event,targetMenu.getOption(), targetMenu.getTarget(), targetMenu.getIdentifier(), targetMenu.getMenuAction(),
+					targetMenu.getParam0(), targetMenu.getParam1());
+			targetMenu = null;
 		}
+	}
+
+	public void menuAction(MenuOptionClicked menuOptionClicked, String option, String target, int identifier, MenuAction menuAction, int param0, int param1)
+	{
+		menuOptionClicked.setMenuOption(option);
+		menuOptionClicked.setMenuTarget(target);
+		menuOptionClicked.setId(identifier);
+		menuOptionClicked.setMenuAction(menuAction);
+		menuOptionClicked.setActionParam(param0);
+		menuOptionClicked.setWidgetId(param1);
 	}
 
 	private void dropItem(int item){

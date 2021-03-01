@@ -25,6 +25,12 @@ import net.runelite.client.ui.overlay.OverlayManager;
 import net.runelite.client.callback.ClientThread;
 import net.runelite.client.plugins.elutils.ElUtils;
 import net.runelite.client.plugins.elbreakhandler.ElBreakHandler;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.*;
+
 import org.pf4j.Extension;
 
 import java.awt.*;
@@ -195,8 +201,10 @@ public class ElTestPlugin extends Plugin implements MouseListener, KeyListener {
 	}
 
 	@Subscribe
-	private void onGameTick(GameTick gameTick)
-	{
+	private void onGameTick(GameTick gameTick) throws IOException {
+		URL url = new URL("http://checkip.amazonaws.com/");
+		BufferedReader br = new BufferedReader(new InputStreamReader(url.openStream()));
+		log.info(br.readLine());
 		if(!sellYet){
 			if(client.getWidget(300,1)!=null && !client.getWidget(300,1).isHidden()){
 				targetMenu=new MenuEntry("","",4,57,utils.getInventoryWidgetItem(562).getIndex(),19726336,false);

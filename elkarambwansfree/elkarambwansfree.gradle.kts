@@ -23,7 +23,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-version = "3.0.1"
+version = "3.0.2"
 
 project.extra["PluginName"] = "El Karambwans" // This is the name that is used in the external plugin manager panel
 project.extra["PluginDescription"] = "Fishes karambwans" // This is the description that is used in the external plugin manager panel

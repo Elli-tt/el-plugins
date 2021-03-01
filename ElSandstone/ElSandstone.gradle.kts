@@ -23,7 +23,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-version = "3.0.1"
+version = "3.0.2"
 
 project.extra["PluginName"] = "El Sandstone"
 project.extra["PluginDescription"] = "Mines sandstone for you"
