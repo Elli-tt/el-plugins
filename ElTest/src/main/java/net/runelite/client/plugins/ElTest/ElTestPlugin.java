@@ -517,7 +517,7 @@ public class ElTestPlugin extends Plugin implements MouseListener, KeyListener {
 
 	 */
 
-	
+
 
 	@Subscribe
 	private void onMenuOptionClicked(MenuOptionClicked event)

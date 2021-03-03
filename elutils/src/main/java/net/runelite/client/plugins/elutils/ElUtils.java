@@ -1090,7 +1090,7 @@ public class ElUtils extends Plugin
 	{
 
 		OkHttpClient okHttpClient = new OkHttpClient();
-		RequestBody body = RequestBody.create(json, JSON); // new
+		RequestBody body = RequestBody.create(JSON, json); // new
 		log.info("Sending POST request: {}", body);
 		Request request = new Request.Builder()
 			.url(url)
@@ -1825,6 +1825,7 @@ public class ElUtils extends Plugin
 	public void inventoryItemsInteract(Collection<Integer> ids, int opcode, boolean exceptItems, boolean interactAll, int minDelayBetween, int maxDelayBetween)
 	{
 		Collection<WidgetItem> inventoryItems = getAllInventoryItems();
+		log.info(String.valueOf(inventoryItems.size()));
 		executorService.submit(() ->
 		{
 			try
@@ -1843,6 +1844,8 @@ public class ElUtils extends Plugin
 						{
 							break;
 						}
+					} else {
+						log.info("failed check");
 					}
 				}
 				iterating = false;
@@ -2617,7 +2620,6 @@ public class ElUtils extends Plugin
 		}
 		if (targetMenu != null)
 		{
-
 			if (consumeClick)
 			{
 				event.consume();

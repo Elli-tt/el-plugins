@@ -23,15 +23,10 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-version = "1.0.1"
+version = "1.0.2"
 
 project.extra["PluginName"] = "El break handler"
 project.extra["PluginDescription"] = "Automatically takes breaks for you (?)"
-
-dependencies {
-    annotationProcessor(group = "org.projectlombok", name = "lombok", version = "1.18.4")
-    annotationProcessor(group = "org.pf4j", name = "pf4j", version = "3.6.0")
-}
 
 tasks {
     jar {
