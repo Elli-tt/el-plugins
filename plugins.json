@@ -10,6 +10,17 @@
 "url":"https://github.com/Elli-tt/El-Plugins/blob/master/release/elairs-2.0.2.jar?raw=true",
 "requires":"^1.0.0"}]},
 
+{"projectUrl":"https://discord.gg/enDUcqH",
+"provider":"El-Plugins",
+"name":"El Mahogany Homes",
+"description":"Completes mahogany homes for you.",
+"id":"elmahoganyhomes-plugin",
+"releases":[{"date":"2021-03-11",
+"sha512sum":"D392786ACFDE17A69556DEF0FCDBDC9CA400FD2A420750983436B78A0D5C563E285275857B4616581BA3296FB51FD611B44C152F3C1C854B23A5A97AA1E3AB18",
+"version":"0.0.1",
+"url":"https://github.com/elli-tt/el-plugins/blob/master/release/elmahoganyhomes-0.0.1.jar?raw=true",
+"requires":"^1.0.0"}]},
+
 
 
 {"projectUrl":"https://discord.gg/enDUcqH",
