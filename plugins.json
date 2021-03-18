@@ -15,10 +15,10 @@
 "name":"El Mahogany Homes",
 "description":"Completes mahogany homes for you.",
 "id":"elmahoganyhomes-plugin",
-"releases":[{"date":"2021-03-14",
-"sha512sum":"DBA3959A5BBA023050D998A5966F09560790638D18B9729FD1ED231BA36C69CB298EF78EA2CFAC1A144474C6BC0AF9632E347EAD7BF4684455D52C728E6EDA8C",
-"version":"0.0.5",
-"url":"https://github.com/elli-tt/el-plugins/blob/master/release/elmahoganyhomes-0.0.5.jar?raw=true",
+"releases":[{"date":"2021-03-18",
+"sha512sum":"64E5B4CB7164B0C8AC504E646A0CAB529B58C3272F78EF0C50EAC839537531CD998892D0246DCC47EDE714DEFD8890EB165AB106F06F05A00A746BED5814A26E",
+"version":"0.0.6",
+"url":"https://github.com/elli-tt/el-plugins/blob/master/release/elmahoganyhomes-0.0.6.jar?raw=true",
 "requires":"^1.0.0"}]},
 
 
@@ -29,10 +29,10 @@
 "description":"Crafts rune in the abyss.",
 "id":"elabyss-plugin",
 "releases":
-[{"date":"2021-03-03",
-"sha512sum":"0FCC84D1B0307D00E54BB2D80D9062F7ED6F8DF47E9AEDF0C81B180D13477EFDE7615FD0483302421AB0CA90E67BD29D46CE2DB5AFCD7729735759E98233B3B0",
-"version":"2.0.0",
-"url":"https://github.com/Elli-tt/El-Plugins/blob/master/release/elabyss-2.0.0.jar?raw=true",
+[{"date":"2021-03-18",
+"sha512sum":"EF7D51A8E1B1B645976FAB59E25B479564B8E4ACC501EC6D07C09AA1950538DEE1029D72F568025228781074E03E6B73AF5F65D453AFD01B4ED69825C7476076",
+"version":"2.0.1",
+"url":"https://github.com/Elli-tt/El-Plugins/blob/master/release/elabyss-2.0.1.jar?raw=true",
 "requires":"^1.0.0"}]},
  
  {"projectUrl":"https://discord.gg/enDUcqH",
