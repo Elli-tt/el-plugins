@@ -42,9 +42,9 @@
 "id":"elherbiboar-plugin",
 "releases":
 [{"date":"2021-03-27",
-"sha512sum":"FCA7FF9BDAEEF09D23F90A414BF824BA2F5E87A80134801B4B9C8CBA78EB8664E2DF54C2039A6A08526217FC5C6A1F4B41A3F6A796680BA9222DF214E7ED3B8F",
-"version":"2.0.2",
-"url":"https://github.com/Elli-tt/El-Plugins/blob/master/release/elherbiboar-2.0.2.jar?raw=true",
+"sha512sum":"3F7140E3914DEE240A5D62261A0BD3B15C934E0C1E0637780426C36015515D3FB0BB71BBD5D51960D863D7EAF9FF4D786CAAB688B4A186C97656B49D7F0744B8",
+"version":"2.0.3",
+"url":"https://github.com/Elli-tt/El-Plugins/blob/master/release/elherbiboar-2.0.3.jar?raw=true",
 "requires":"^1.0.0"}]},
  
  
