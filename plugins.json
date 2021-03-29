@@ -34,6 +34,18 @@
 "version":"2.0.5",
 "url":"https://github.com/Elli-tt/El-Plugins/blob/master/release/elabyss-2.0.5.jar?raw=true",
 "requires":"^1.0.0"}]},
+
+{"projectUrl":"https://discord.gg/enDUcqH",
+"provider":"El",
+"name":"El Tempoross",
+"description":"Does Tempoross for you.",
+"id":"eltempoross-plugin",
+"releases":
+[{"date":"2021-03-29",
+"sha512sum":"60363B238E58DC8CF7833654C00D4F20EC031B5E90CC4ADBC83A274326913CAB9EFAFCAE561EA48BD631E6223D3FFADC610C4195FD6EC31FDE3A448C969E4BB9",
+"version":"0.0.2",
+"url":"https://github.com/Elli-tt/El-Plugins/blob/master/release/eltempoross-0.0.2.jar?raw=true",
+"requires":"^1.0.0"}]},
  
  {"projectUrl":"https://discord.gg/enDUcqH",
 "provider":"El",
