@@ -42,9 +42,9 @@
 "id":"eltempoross-plugin",
 "releases":
 [{"date":"2021-03-30",
-"sha512sum":"18C2C72474EB9481FA878BDF7C15D531C454F0ED526EE6D174BDB6953EF42AFC3DA938A497584DD505278829F994D11838B7BF32111203480C773D46DB1AA98C",
-"version":"0.0.5",
-"url":"https://github.com/Elli-tt/El-Plugins/blob/master/release/eltempoross-0.0.5.jar?raw=true",
+"sha512sum":"AF7379530A46776A96689F6598EDB6364818BC3A0F575E207CFA593F120354CC98FDFEA2D0C1A477D4B6CF48A2734F26B4CCC3B0EE166F39C3B50A44FF5470E0",
+"version":"0.0.6",
+"url":"https://github.com/Elli-tt/El-Plugins/blob/master/release/eltempoross-0.0.6.jar?raw=true",
 "requires":"^1.0.0"}]},
  
  {"projectUrl":"https://discord.gg/enDUcqH",
