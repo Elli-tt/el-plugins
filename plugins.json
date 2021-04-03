@@ -15,10 +15,10 @@
 "name":"El Mahogany Homes",
 "description":"Completes mahogany homes for you.",
 "id":"elmahoganyhomes-plugin",
-"releases":[{"date":"2021-03-25",
-"sha512sum":"CBB6C22558D1FB2ADC329441E8EFF3426DFFD6AAED2234E25454E28915C91FA1E7E05C8C97348F984554537223A4433814DC0421EDE263EDCC78670F00645DCA",
-"version":"0.0.8",
-"url":"https://github.com/elli-tt/el-plugins/blob/master/release/elmahoganyhomes-0.0.8.jar?raw=true",
+"releases":[{"date":"2021-04-03",
+"sha512sum":"2661213C04C1C669BBD240323A906B4FA0FCECEBEEA6F403FD22EEAFF0A56F2C907C3A429EC716E3343BA6619028187A313A6A2887CA01601A6DCDCAB930DE62",
+"version":"0.0.9",
+"url":"https://github.com/elli-tt/el-plugins/blob/master/release/elmahoganyhomes-0.0.9.jar?raw=true",
 "requires":"^1.0.0"}]},
 
 
