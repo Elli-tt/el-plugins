@@ -82,8 +82,8 @@
  "description":"El - Utils required for plugins to function with added automation",
  "id":"elutils-plugin",
  "releases":
- [{"date":"2021-03-26",
- "sha512sum":"5644A86FC4F27792BBB09103AACD40CFA631A34BC98EE49FB4593CAC0526C47723BBDB0CAB172CD2045397826AA5471011096ADC8459A35ADB29DDD5E466F8C0",
- "version":"0.0.7",
- "url":"https://github.com/Elli-tt/El-Plugins/blob/master/release/elutils-0.0.7.jar?raw=true",
+ [{"date":"2021-04-04",
+ "sha512sum":"64B32BE375A930E6467C1509AA10D0592CF872205768C509C7F3BD5DF78C23BC844AD2595E3D1568E50B56AFE1EED355AC0C802ED04F9FF073C10FF4A368E65B",
+ "version":"0.0.8",
+ "url":"https://github.com/Elli-tt/El-Plugins/blob/master/release/elutils-0.0.8.jar?raw=true",
  "requires":"^1.0.0"}]}]
