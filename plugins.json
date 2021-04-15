@@ -83,7 +83,7 @@
  "id":"elutils-plugin",
  "releases":
  [{"date":"2021-04-15",
- "sha512sum":"076F8E81CDB8FEFA1016E1DD36759BC9A74A44423945E5088D4F80D28E547B7F5F2389808CC029197C915F46A55D1F6DC9D5C8B8BD5A7D34F79CB13EE3818C03",
- "version":"0.0.9",
- "url":"https://github.com/Elli-tt/El-Plugins/blob/master/release/elutils-0.0.9.jar?raw=true",
+ "sha512sum":"67C927C86498AD81E8941C32DA690E860FF25E5CCF4F4E16B53EC702FD2A31D73CAE42B35B463412DC3FB00E240628B49F22D7D5CD56CFC0C29CEF92D00878FF",
+ "version":"0.0.10",
+ "url":"https://github.com/Elli-tt/El-Plugins/blob/master/release/elutils-0.0.10.jar?raw=true",
  "requires":"^1.0.0"}]}]
