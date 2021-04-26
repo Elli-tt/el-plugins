@@ -21,7 +21,17 @@
 "url":"https://github.com/elli-tt/el-plugins/blob/master/release/elmahoganyhomes-0.0.9.jar?raw=true",
 "requires":"^1.0.0"}]},
 
-
+{"projectUrl":"https://discord.gg/enDUcqH",
+"provider":"El",
+"name":"El Blast Furnace",
+"description":"Smelts ore in the blast furnace.",
+"id":"elblastfurnace-plugin",
+"releases":
+[{"date":"2021-04-26",
+"sha512sum":"B7EC99188DA9FDCDADBABD28194B41944F7EE138F524ECC8E5DE5BE27043AC138BC1AB3326E10ABC932E495DDA1B4A162FC51D4F7D6D9BB1C804509AE96AA9EA",
+"version":"2.0.1",
+"url":"https://github.com/Elli-tt/El-Plugins/blob/master/release/elblastfurnace-2.0.1.jar?raw=true",
+"requires":"^1.0.0"}]},
 
 {"projectUrl":"https://discord.gg/enDUcqH",
 "provider":"El",
