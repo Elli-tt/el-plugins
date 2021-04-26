@@ -28,9 +28,9 @@
 "id":"elblastfurnace-plugin",
 "releases":
 [{"date":"2021-04-26",
-"sha512sum":"CF2F045772587344CF61CBBC880A5BF459A567DE98813AC29AA33C883FE70D852AAC4B7AD4396C5D5095507FF84918E80398C61975463653C5C52805FCAEF338",
-"version":"2.0.2",
-"url":"https://github.com/Elli-tt/El-Plugins/blob/master/release/elblastfurnace-2.0.2.jar?raw=true",
+"sha512sum":"C67E96827788A596237E44B98E1BE498E15B7501BD88F88FADDFE1F7483B284D8FC29BFAC244602749E279F3A8439667FFAC5F42C7C844A40E573CE95754FA74",
+"version":"2.0.3",
+"url":"https://github.com/Elli-tt/El-Plugins/blob/master/release/elblastfurnace-2.0.3.jar?raw=true",
 "requires":"^1.0.0"}]},
 
 {"projectUrl":"https://discord.gg/enDUcqH",
