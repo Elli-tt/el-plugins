@@ -28,9 +28,9 @@
 "id":"elblastfurnace-plugin",
 "releases":
 [{"date":"2021-04-27",
-"sha512sum":"E4B0AFE58B97673487F7B550D71790BF4724D125220CF6BDC286F6050F4940375207C91F313535BB0A5E19DAB0D7C983959C79836733ADA4F791E4784B64253E",
-"version":"2.0.6",
-"url":"https://github.com/Elli-tt/El-Plugins/blob/master/release/elblastfurnace-2.0.6.jar?raw=true",
+"sha512sum":"793BCFE6C8675793ECA8876C78E2AD3D82E04BFFC2F4B8989E352174CA82BD32CD2683FCB1CC4D7B8B9EBF8C4C568795A41B9338410ABC102E53A54AB45E7429",
+"version":"2.0.7",
+"url":"https://github.com/Elli-tt/El-Plugins/blob/master/release/elblastfurnace-2.0.7.jar?raw=true",
 "requires":"^1.0.0"}]},
 
 {"projectUrl":"https://discord.gg/enDUcqH",
@@ -51,10 +51,10 @@
 "description":"Does Tempoross for you.",
 "id":"eltempoross-plugin",
 "releases":
-[{"date":"2021-04-26",
-"sha512sum":"1465D65DE5FD3F9B93DAC3192D4699FE546BC35E114DC6A7C984A37257C31EC5A3FD2DB034926AE820E8881025F2152FF549480205A2C1E7718DEDAB3F6E07B4",
-"version":"1.0.9",
-"url":"https://github.com/Elli-tt/El-Plugins/blob/master/release/eltempoross-1.0.9.jar?raw=true",
+[{"date":"2021-04-27",
+"sha512sum":"55F41C6E1983600EA4B7E8B4C7A57BCBCFB599716BC1A7C7AE369CE0439B00437C2233CFF7882984F1C2565376E3CD601862A0BE4B1033AC1E7E07EC9282B158",
+"version":"1.0.10",
+"url":"https://github.com/Elli-tt/El-Plugins/blob/master/release/eltempoross-1.0.10.jar?raw=true",
 "requires":"^1.0.0"}]},
  
  {"projectUrl":"https://discord.gg/enDUcqH",
