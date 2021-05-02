@@ -39,10 +39,10 @@
 "description":"Crafts rune in the abyss.",
 "id":"elabyss-plugin",
 "releases":
-[{"date":"2021-04-23",
-"sha512sum":"1C889C0B59031136FB572054610901AD38EC6C1263BA345F82278257B0CDEFE9656EFADF16E2D92E0008C06D4BEF4A30BDCAADD63EEE0095A34163B16EACED62",
-"version":"2.0.7",
-"url":"https://github.com/Elli-tt/El-Plugins/blob/master/release/elabyss-2.0.7.jar?raw=true",
+[{"date":"2021-05-02",
+"sha512sum":"14E6547D45AFB0FE0A54B2ABD493F0204229A0DF95B66C9A3E581E327C7AAE065EC544719BE1488E64060E375355FB51C07B710F1DA7F23420660F358BF2040D",
+"version":"2.0.8",
+"url":"https://github.com/Elli-tt/El-Plugins/blob/master/release/elabyss-2.0.8.jar?raw=true",
 "requires":"^1.0.0"}]},
 
 {"projectUrl":"https://discord.gg/enDUcqH",
