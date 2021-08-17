@@ -63,10 +63,10 @@
 "description":"Does herbiboar for you.",
 "id":"elherbiboar-plugin",
 "releases":
-[{"date":"2021-03-27",
-"sha512sum":"3F7140E3914DEE240A5D62261A0BD3B15C934E0C1E0637780426C36015515D3FB0BB71BBD5D51960D863D7EAF9FF4D786CAAB688B4A186C97656B49D7F0744B8",
-"version":"2.0.3",
-"url":"https://github.com/Elli-tt/El-Plugins/blob/master/release/elherbiboar-2.0.3.jar?raw=true",
+[{"date":"2021-08-17",
+"sha512sum":"95119617B0883B8979AE72F6D97367F6438547AA8E5A448CFDFD2D1BF6C77FE08EA1B5401D81EC22DFD02DA6FD71848C17D61D5E7547334C60B11EF99B9FF300",
+"version":"2.0.4",
+"url":"https://github.com/Elli-tt/El-Plugins/blob/master/release/elherbiboar-2.0.4.jar?raw=true",
 "requires":"^1.0.0"}]},
  
  
