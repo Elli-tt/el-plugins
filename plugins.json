@@ -27,9 +27,9 @@
 "description":"Crafts wrath runes for you.",
 "id":"elwrath-plugin",
 "releases":[{"date":"2021-08-23",
-"sha512sum":"B7373D7E3C1A631282A70CE924B0335191CF91F4597DE9954BB501673FAD963724A5C2F305643FF575165CD800E3FE6ADC88141CF8DA307CFBD19A3BF23A257D",
-"version":"1.0.2",
-"url":"https://github.com/elli-tt/el-plugins/blob/master/release/elwrath-1.0.2.jar?raw=true",
+"sha512sum":"22B49A926387EF3BFCBDAFEE6B4CC171C42AF7BF92A7ED45FB4737B9C8CEE0A8E5420398394603486D2A62DB19452E20A06A9FFB82079A9DDCE19DB841A94E4B",
+"version":"1.1.1",
+"url":"https://github.com/elli-tt/el-plugins/blob/master/release/elwrath-1.1.1.jar?raw=true",
 "requires":"^1.0.0"}]},
 
 {"projectUrl":"https://discord.gg/enDUcqH",
