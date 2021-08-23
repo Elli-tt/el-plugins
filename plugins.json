@@ -27,9 +27,9 @@
 "description":"Crafts wrath runes for you.",
 "id":"elwrath-plugin",
 "releases":[{"date":"2021-08-23",
-"sha512sum":"076743215F07A6394BD116291DBB029EB2C7850100EF8472B145CDA535980211C4375061EFD8FD71B05182222BC5E1D665DCB731F774E9146AC90C1C116F2C9A",
-"version":"1.0.1",
-"url":"https://github.com/elli-tt/el-plugins/blob/master/release/elmahoganyhomes-1.0.1.jar?raw=true",
+"sha512sum":"B7373D7E3C1A631282A70CE924B0335191CF91F4597DE9954BB501673FAD963724A5C2F305643FF575165CD800E3FE6ADC88141CF8DA307CFBD19A3BF23A257D",
+"version":"1.0.2",
+"url":"https://github.com/elli-tt/el-plugins/blob/master/release/elmahoganyhomes-1.0.2.jar?raw=true",
 "requires":"^1.0.0"}]},
 
 {"projectUrl":"https://discord.gg/enDUcqH",
