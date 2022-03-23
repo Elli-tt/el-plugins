@@ -15,9 +15,9 @@
 "description":"Mines amethyst and crafts or banks it.",
 "id":"elamethyst-plugin",
 "releases":[{"date":"2022-03-23",
-"sha512sum":"685A51691F4F576FF94F9F374E1C2F2E97C4C4C21E80C04577A3A1B539FFC76B1C0B814DD715925F4F5D6ABB203310344E55D748FDA8AC3F45792048087FD375",
-"version":"1.0.1",
-"url":"https://github.com/elli-tt/el-plugins/blob/master/release/elamethyst-1.0.1.jar?raw=true",
+"sha512sum":"29D6964373346AD508D1AFEA17EC007794D868964C0B201CDF57427731E13DB049BFAABFF3040C58C69AD9D683D5B630E6111A23FD1D6B0B22C81754F96D3D16",
+"version":"1.0.2",
+"url":"https://github.com/elli-tt/el-plugins/blob/master/release/elamethyst-1.0.2.jar?raw=true",
 "requires":"^1.0.0"}]},
 
 {"projectUrl":"https://discord.gg/enDUcqH",
