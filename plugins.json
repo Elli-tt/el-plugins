@@ -61,10 +61,10 @@
 "description":"Does Tempoross for you.",
 "id":"eltempoross-plugin",
 "releases":
-[{"date":"2021-03-22",
-"sha512sum":"134F6C36DDE8F74298244F082DC91729B14B45D14E289687C576F920D0FBBB84A8D1425B0D0C12E9DC0871A9B0A336AF01697ABA8FB079A9427B93D0BC845D13",
-"version":"1.4.2",
-"url":"https://github.com/Elli-tt/El-Plugins/blob/master/release/eltempoross-1.4.2.jar?raw=true",
+[{"date":"2021-03-25",
+"sha512sum":"AFD66B32827010BB3F2707A52E41F62DE3EFB2ED63CF35F573A4E23080F72D7D090EE6792D3D18E8A7FE9A2FB04715EB15967F21A1E3A1F23E34ADB2121DBA53",
+"version":"1.4.3",
+"url":"https://github.com/Elli-tt/El-Plugins/blob/master/release/eltempoross-1.4.3.jar?raw=true",
 "requires":"^1.0.0"}]},
  
  {"projectUrl":"https://discord.gg/enDUcqH",
