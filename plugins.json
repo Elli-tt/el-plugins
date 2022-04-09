@@ -22,6 +22,17 @@
 
 {"projectUrl":"https://discord.gg/enDUcqH",
 "provider":"El-Plugins",
+"name":"El Guardians",
+"description":"Completes the Guardians of the Rift minigame.",
+"id":"elguardians-plugin",
+"releases":[{"date":"2022-04-09",
+"sha512sum":"A27096324571D29D875323808872D52EC34B8EA5966CB9012BD551B4338B75495AB0A29EAE748D1312A233B202225AA4CD22408F06E8EB7F7EC275FD05D649E6",
+"version":"0.0.1",
+"url":"https://github.com/elli-tt/el-plugins/blob/master/release/elamethyst-0.0.1.jar?raw=true",
+"requires":"^1.0.0"}]},
+
+{"projectUrl":"https://discord.gg/enDUcqH",
+"provider":"El-Plugins",
 "name":"El Wrath",
 "description":"Crafts wrath runes for you.",
 "id":"elwrath-plugin",
