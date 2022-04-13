@@ -26,9 +26,9 @@
 "description":"Completes the Guardians of the Rift minigame.",
 "id":"elguardians-plugin",
 "releases":[{"date":"2022-04-13",
-"sha512sum":"4A738C54FC2047264AB33641D2A6F06E22EAED498130C031AB2AC008B1C0D4BC7A6B8A14D1DA52B87802292A4FE466CA5B821671E1CA422D0C3100A8F0963260",
-"version":"1.0.8",
-"url":"https://github.com/elli-tt/el-plugins/blob/master/release/elguardians-1.0.8.jar?raw=true",
+"sha512sum":"33607448D61CF4B0895CEF3ECD326D08C20E358F517EFAAE4DD7603723474D05B10022D3A51525677BC2FD46CC0829FD8A1A721108051B22A1846640A506D578",
+"version":"1.0.9",
+"url":"https://github.com/elli-tt/el-plugins/blob/master/release/elguardians-1.0.9.jar?raw=true",
 "requires":"^1.0.0"}]},
 
 {"projectUrl":"https://discord.gg/enDUcqH",
