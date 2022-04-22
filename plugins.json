@@ -84,10 +84,10 @@
 "description":"Does herbiboar for you.",
 "id":"elherbiboar-plugin",
 "releases":
-[{"date":"2021-04-18",
-"sha512sum":"86B33A6AED2355A8C51046C4684B05DE88E818B5AA252680282C46C9578D443DBA28F559C1B35BAF4896B6DE1B2B6A6EC6ED540C2F73CD2E68D1B9D1B9540A64",
-"version":"2.2.0",
-"url":"https://github.com/Elli-tt/El-Plugins/blob/master/release/elherbiboar-2.2.0.jar?raw=true",
+[{"date":"2021-04-22",
+"sha512sum":"7E7736E60B811632EAD62379CD1452AC412CE25ACE565EC4ECBFED7FE92D3CCD078A18F169122CBDDF42236AB3987F7CF33DF295AC43C16DC586C5B69680398B",
+"version":"2.3.0",
+"url":"https://github.com/Elli-tt/El-Plugins/blob/master/release/elherbiboar-2.3.0.jar?raw=true",
 "requires":"^1.0.0"}]},
 
 {"projectUrl":"https://discord.gg/enDUcqH","provider":"El","name":"El Airs","description":"Crafts at the air altar.","id":"elairs-plugin","releases":[{"date":"2021-12-17","sha512sum":"C740930BF552D4545C2479D2889267E1C775A04BBB09CE83A2EB3C9BDCB010A5932B3796B492F846A73BE5DB45479177CEA0EF59417D2156E78099941363BB7F","version":"2.1.0","url":"https://github.com/Elli-tt/El-Plugins/blob/master/release/elairs-2.1.0.jar?raw=true","requires":"^1.0.0"}]},
