@@ -48,10 +48,10 @@
 "description":"Smelts ore in the blast furnace.",
 "id":"elblastfurnace-plugin",
 "releases":
-[{"date":"2021-04-18",
-"sha512sum":"B75A289BDA16012F9F5DB0903E3C0D979EE4F3F2E2C44FE39B7B8A01586C82B94AB8E4BED8977118EDB273F8A4D92D19CE675D653E893206D90B2C4607741D0B",
-"version":"2.3.0",
-"url":"https://github.com/Elli-tt/El-Plugins/blob/master/release/elblastfurnace-2.3.0.jar?raw=true",
+[{"date":"2021-04-22",
+"sha512sum":"F42766CF4F164ABF680947B4BB8C8C80517CEDEC3AA2BBB9B30876ADC9FA5AD8682E278615181BCDBB4191F1E82937352615B82DA2E0654B2390759DEC5225DE",
+"version":"2.4.0",
+"url":"https://github.com/Elli-tt/El-Plugins/blob/master/release/elblastfurnace-2.4.0.jar?raw=true",
 "requires":"^1.0.0"}]},
 
 {"projectUrl":"https://discord.gg/enDUcqH",
