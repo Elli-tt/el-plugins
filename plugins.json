@@ -129,9 +129,9 @@
 "description":"Crafts blood runes",
 "id":"elbloods-plugin",
 "releases":[{"date":"2022-04-28",
-"sha512sum":"F19484150A0AAC69246B2ED2A5140EBC79115B3A23DDF9B5D99427CAC0F9ABF9469357EF04D4F8412D57B8DFEB9E48B286F32807B4C809C9A9CD05CA5F8E1707",
-"version":"6.0.1",
-"url":"https://github.com/elli-tt/el-plugins/blob/master/release/elbloods-6.0.1.jar?raw=true",
+"sha512sum":"6208E9A7DEDA28A272656E940708252210065854F5FF0DCF89586D6BE4FBA235221B4CEC4059ED2EDD1F725006E54847D18625BC7520D958F27914FF3ECB3A9A",
+"version":"6.0.2",
+"url":"https://github.com/elli-tt/el-plugins/blob/master/release/elbloods-6.0.2.jar?raw=true",
 "requires":"^1.0.0"}]},
 
  {"projectUrl":"https://discord.gg/enDUcqH",
