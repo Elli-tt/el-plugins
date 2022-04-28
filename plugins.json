@@ -272,9 +272,9 @@
 "description":"Tick cooks raw karambwans.",
 "id":"eltickcooker-plugin",
 "releases":[{"date":"2022-04-28",
-"sha512sum":"07681232D18CBE08AFC5C09AB647A605955CB88AE46ED4382AAE86C08F9330ECE4E380EA834EB46EB52D4317A86AE8D034EA5774A6281EDF6ADACDBB54E003B6",
-"version":"5.0.1",
-"url":"https://github.com/elli-tt/el-plugins/blob/master/release/eltickcooker-5.0.1.jar?raw=true",
+"sha512sum":"21C504146BEBE1FB872AC0390A61F3AEA021C286BF5003EB9222FFC2CEF99EEFBAFC5F3C1518018B067E1C07A5B527FC9B93AD654C7F8DDF3DE7E6105DF76011",
+"version":"5.0.2",
+"url":"https://github.com/elli-tt/el-plugins/blob/master/release/eltickcooker-5.0.2.jar?raw=true",
 "requires":"^1.0.0"}]},
 
  {"projectUrl":"https://discord.gg/enDUcqH",
