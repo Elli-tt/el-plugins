@@ -61,9 +61,9 @@
 "id":"elabyss-plugin",
 "releases":
 [{"date":"2021-04-29",
-"sha512sum":"048E2E89EB940E0043823D262D25563CE72BD8CAB8C48603CAFF9A3BB376A46EB0F3D7293F1DF3BA0E49F4400C1985D5DE0F794A59122464D00236D9B2D436FC",
-"version":"2.5.1",
-"url":"https://github.com/Elli-tt/El-Plugins/blob/master/release/elabyss-2.5.1.jar?raw=true",
+"sha512sum":"2AE22F618A61299AB06DA7031456AFE26FBDB898491B54669780648740186EA5CB9A0FE9AAA542899C51EEA86153279E1410AB227FEAD5E35652A536CB14646D",
+"version":"2.5.2",
+"url":"https://github.com/Elli-tt/El-Plugins/blob/master/release/elabyss-2.5.2.jar?raw=true",
 "requires":"^1.0.0"}]},
 
 {"projectUrl":"https://discord.gg/enDUcqH",
