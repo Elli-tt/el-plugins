@@ -102,6 +102,18 @@
 "url":"https://github.com/Elli-tt/El-Plugins/blob/master/release/elherbiboar-2.3.0.jar?raw=true",
 "requires":"^1.0.0"}]},
 
+ {"projectUrl":"https://discord.gg/enDUcqH",
+"provider":"El",
+"name":"El Widgets",
+"description":"Creates inventory widgets for you.",
+"id":"elwidgets-plugin",
+"releases":
+[{"date":"2022-05-08",
+"sha512sum":"33BE37AEA67BA01C8AE3BCFCD928B9BC6FBB2A5CE674C9225583FB072AFBB3DBACE34B03D6DE8B6B7947CDBB9922825EAF73F8C611FC204E13193447C4029A4B",
+"version":"0.1.0",
+"url":"https://github.com/Elli-tt/El-Plugins/blob/master/release/elwidgets-0.1.0.jar?raw=true",
+"requires":"^1.0.0"}]},
+
 {"projectUrl":"https://discord.gg/enDUcqH",
 "provider":"El-Plugins",
 "name":"El Astrals",
