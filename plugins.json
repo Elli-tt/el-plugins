@@ -73,9 +73,9 @@
 "id":"elthiever-plugin",
 "releases":
 [{"date":"2021-05-09",
-"sha512sum":"CE63508E031CC2B7DF56167C0092C7C23EE9415A045158FF76B98234109D63DFFD4778E36CC526A9F6219A77FF8D942C0C9654532A72A4D1E17C3A422301C6CF",
-"version":"0.2.1",
-"url":"https://github.com/Elli-tt/El-Plugins/blob/master/release/elthiever-0.2.1.jar?raw=true",
+"sha512sum":"7DA464D97AE312B8A84A8CC431B6E87324739275EF3F11ED30197B9EA8A8840C7433805EB24B4E9741B9AE2F96819E549120FFF77B7977DABBE204D3E502ECBD",
+"version":"0.2.2",
+"url":"https://github.com/Elli-tt/El-Plugins/blob/master/release/elthiever-0.2.2.jar?raw=true",
 "requires":"^1.0.0"}]},
 
 {"projectUrl":"https://discord.gg/enDUcqH",
