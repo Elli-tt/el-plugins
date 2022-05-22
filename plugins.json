@@ -109,9 +109,9 @@
 "id":"elwidgets-plugin",
 "releases":
 [{"date":"2022-05-22",
-"sha512sum":"BAC1109513635950ABF1D33F43D8E50D5B79BBA921521F1FEEE82FD808CD8E676B5BC842D4FE735A4266CDC86CA364B84B6DCF859C5CC63476C83C942BC46385",
-"version":"0.3.4",
-"url":"https://github.com/Elli-tt/El-Plugins/blob/master/release/elwidgets-0.3.4.jar?raw=true",
+"sha512sum":"30FE6721688B5FA9C7F4F5B9573299DB33BAF23C99AEBFB154C67F1F248116745A5A25814FC75612A3BF86550AFBDA346B606388C559259F49B81351BD66482F",
+"version":"0.3.5",
+"url":"https://github.com/Elli-tt/El-Plugins/blob/master/release/elwidgets-0.3.5.jar?raw=true",
 "requires":"^1.0.0"}]},
 
 {"projectUrl":"https://discord.gg/enDUcqH",
