@@ -108,10 +108,10 @@
 "description":"Creates inventory widgets for you.",
 "id":"elwidgets-plugin",
 "releases":
-[{"date":"2022-05-22",
-"sha512sum":"89CE3C87C3B79709051A58313CB262B4597A831275C7D1C13695FE20D2CDB32C59742C5FE2AAB00CCFF4D02924ED6A049C9C0BA73393791290D6CECF8364CEAC",
-"version":"0.3.6",
-"url":"https://github.com/Elli-tt/El-Plugins/blob/master/release/elwidgets-0.3.6.jar?raw=true",
+[{"date":"2022-05-24",
+"sha512sum":"776182341A5D85CA5B6C5B09C4A5FC876CA07DF23C288EBF7BB65242CE166FB3B4B2E6812530AC20B8B9EEF21892D6AC3A446CA5C3E21F6260C34CD2202C0B1F",
+"version":"0.4.0",
+"url":"https://github.com/Elli-tt/El-Plugins/blob/master/release/elwidgets-0.4.0.jar?raw=true",
 "requires":"^1.0.0"}]},
 
 {"projectUrl":"https://discord.gg/enDUcqH",
