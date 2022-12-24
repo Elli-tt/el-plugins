@@ -72,10 +72,10 @@
 "description":"Thieves at various places in the game.",
 "id":"elthiever-plugin",
 "releases":
-[{"date":"2021-12-23",
-"sha512sum":"B27212F9948CDFF6D80F1C53E4D7452BA26142C3C7CDB7E2874C1A462462BF968AE1A8BA14B8EC1EB47C310634E4C2E0843D067259BD9334D6E1503A6F62F664",
-"version":"1.2.3",
-"url":"https://github.com/Elli-tt/El-Plugins/blob/master/release/elthiever-1.2.3.jar?raw=true",
+[{"date":"2021-12-24",
+"sha512sum":"E74FCE3C266C0081E79CE4192C6803E0C9BC9366DD2C692E252089B10DBC01292AEB0CBD5676046D71D4D59BEBA2287CBE28EAA65429188EDB1475BF9126E98D",
+"version":"1.2.4",
+"url":"https://github.com/Elli-tt/El-Plugins/blob/master/release/elthiever-1.2.4.jar?raw=true",
 "requires":"^1.0.0"}]},
 
 {"projectUrl":"https://discord.gg/enDUcqH",
